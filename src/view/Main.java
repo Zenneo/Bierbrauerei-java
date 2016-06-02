@@ -5,6 +5,8 @@ import org.eclipse.swt.widgets.Shell;
 
 public class Main {
 	void main() {
+		// TODO not implemented, replace stuff below
+		
 		Display display = new Display();
 		Shell shell = new Shell(display);
 		shell.open();
