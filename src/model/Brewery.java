@@ -30,34 +30,38 @@ public class Brewery {
 	}
 
 	// Constructor
-	public Brewery(int capacity_ini, int output) {
+	public Brewery(int capacity_ini, int output_init) {
 		storageMaxSpace = capacity_ini;
-		this.output = output;
+		this.output = output_init;
 		storage = 0;
 	}
 
 	public void produce() {
-		// TODO not implemented
+		storage = storage + output;
+		if (storage > storageMaxSpace)
+		{
+			storage = storageMaxSpace;
+		}
 	}
 
-	public int removeBeer(int amount) {
-		// TODO not implemented
-		// TODO replace me
-		return 0;
+	public void removeBeer(int amount) {
+		if (storage < amount)
+		{
+			throw new UnsupportedOperationException("zu wenig Bier im Lager");
+		} else {
+			storage = storage - amount;
+		}
 	}
 
 	public void upgradeStorage(int extraCapacity) {
-		// TODO not implemented
-		// TODO throws exception when failed
+		storageMaxSpace = storageMaxSpace + extraCapacity;
 	}
 
 	public void upgradeOutput(int extraOutput) {
-		// TODO not implemented
-		// TODO throws exception when failed
+		output = output + extraOutput;
 	}
 
 	public void upgradeRoundlyCosts(int extraRoundlyCosts) {
-		// TODO not implemented
-		// TODO throws exception when failed
+		roundlyCosts = roundlyCosts + extraRoundlyCosts;
 	}
 }
