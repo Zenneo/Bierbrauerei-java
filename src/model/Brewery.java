@@ -45,21 +45,34 @@ public class Brewery {
 
 	public void removeBeer(int amount) {
 		if (storage < amount) {
-			throw new UnsupportedOperationException("zu wenig Bier im Lager");
+			throw new IllegalArgumentException("zu wenig Bier im Lager");
 		} else {
-			storage = storage - amount;
+			storage -= amount;
 		}
 	}
 
 	public void upgradeStorage(int extraCapacity) {
-		storageMaxSpace = storageMaxSpace + extraCapacity;
+		if (extraCapacity > 0 ) {
+			storageMaxSpace += extraCapacity;
+		} else {
+			throw new IllegalArgumentException("extraCapacity lower than 0");
+		}
+		
 	}
 
 	public void upgradeOutput(int extraOutput) {
-		output = output + extraOutput;
+		if (extraOutput > 0 ) {
+			output += extraOutput;
+		} else {
+			throw new IllegalArgumentException("extraOutput lower than 0");
+		}
 	}
 
 	public void upgradeRoundlyCosts(int extraRoundlyCosts) {
-		roundlyCosts = roundlyCosts + extraRoundlyCosts;
+		if (extraRoundlyCosts > 0 ) {
+			roundlyCosts += extraRoundlyCosts;
+		} else {
+			throw new IllegalArgumentException("extraRoundlyCosts lower than 0");
+		}
 	}
 }
