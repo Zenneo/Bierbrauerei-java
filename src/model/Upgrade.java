@@ -2,15 +2,15 @@ package model;
 
 public class Upgrade {
 	// This class represents one Upgrade
-	
+
 	// --variables--
-	
+
 	private int[] costs;
 	private int[] effects;
 	private int[] roundlyCosts;
 	private String[] descriptions;
 	private int id;
-	
+
 	public Upgrade(int ini_id) {
 		id = ini_id;
 	}
@@ -30,5 +30,5 @@ public class Upgrade {
 	public String getDescriptions() {
 		return descriptions[id];
 	}
-	
+
 }
