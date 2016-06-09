@@ -38,15 +38,13 @@ public class Brewery {
 
 	public void produce() {
 		storage = storage + output;
-		if (storage > storageMaxSpace)
-		{
+		if (storage > storageMaxSpace) {
 			storage = storageMaxSpace;
 		}
 	}
 
 	public void removeBeer(int amount) {
-		if (storage < amount)
-		{
+		if (storage < amount) {
 			throw new UnsupportedOperationException("zu wenig Bier im Lager");
 		} else {
 			storage = storage - amount;
