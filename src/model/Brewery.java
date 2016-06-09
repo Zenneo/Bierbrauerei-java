@@ -5,17 +5,37 @@ public class Brewery {
 	// output.
 
 	// --variables--
-	private int maxOutput;
-	private int capacity;
-	private int currentUsage;
-	
-	// Constructor
-	public Brewery(int capacity_ini, int maximumOutput) {
-		capacity = capacity_ini;
-		this.maxOutput = maximumOutput;
-		currentUsage = 0;
+	private Bank bank;
+
+	private int storageMaxSpace; // maximum amount stored
+	private int storage; // current amount stored
+	private int output; // output per round
+	private int roundlyCosts; // cost per round
+
+	// getters
+	public int getStorageMaxSpace() {
+		return storageMaxSpace;
 	}
-	
+
+	public int getStorage() {
+		return storage;
+	}
+
+	public int getOutput() {
+		return output;
+	}
+
+	public int getRoundlyCosts() {
+		return roundlyCosts;
+	}
+
+	// Constructor
+	public Brewery(int capacity_ini, int output) {
+		storageMaxSpace = capacity_ini;
+		this.output = output;
+		storage = 0;
+	}
+
 	public void produce() {
 		// TODO not implemented
 	}
@@ -28,9 +48,16 @@ public class Brewery {
 
 	public void upgradeStorage(int extraCapacity) {
 		// TODO not implemented
+		// TODO throws exception when failed
 	}
-	
+
 	public void upgradeOutput(int extraOutput) {
 		// TODO not implemented
+		// TODO throws exception when failed
+	}
+
+	public void upgradeRoundlyCosts(int extraRoundlyCosts) {
+		// TODO not implemented
+		// TODO throws exception when failed
 	}
 }
