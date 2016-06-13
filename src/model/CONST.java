@@ -6,8 +6,9 @@ public final class CONST {
 
 	// --Database--
 	// (prefix db_)
-	final String db_url = "";
-	final String db_tableEvents = "";
+	public final String db_url = "";
+	public final String db_tableEvents = "";
 
+	
 	// TODO add more constants
 }
