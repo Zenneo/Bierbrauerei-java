@@ -5,7 +5,6 @@ public class Brewery {
 	// output.
 
 	// --variables--
-	private Bank bank;
 
 	private int storageMaxSpace; // maximum amount stored
 	private int storage; // current amount stored
