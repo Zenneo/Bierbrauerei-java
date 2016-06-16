@@ -6,5 +6,8 @@ public class Event {
 		// TODO Auto-generated method stub
 
 	}
-
+    public void getEvent(int round)
+    {
+    	
+    }
 }

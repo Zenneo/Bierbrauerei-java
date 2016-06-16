@@ -11,6 +11,11 @@ public class RoundManager {
     private Event event;
     private int sellOrderPrice;
     private int sellOrderBier;
+    private String eventName;
+    private String eventDescription;
+    private int eventPrice;
+    private int eventAmount;
+    private int eventDurability;
 	public int getRound() {
 		return round;
 	}
@@ -22,6 +27,11 @@ public class RoundManager {
 		event = new Event();
 		sellOrderPrice = 0;
 		sellOrderBier = 0;
+		eventName = "";
+		eventDescription = "";
+		eventPrice = 0;
+		eventAmount = 0;
+		eventDurability = 0;
 	}
 	
 	// does every operation and finishes a round if everything is valid 
@@ -30,7 +40,7 @@ public class RoundManager {
 		brewery.produce();
 		bank.payOut(brewery.getRoundlyCosts());
 		sell();
-		
+		checkEvents();
 		// increment round counter
 		round++;
 	}
@@ -75,5 +85,12 @@ public class RoundManager {
 	private int checkMarket() //Überprüft, weiviel der Menge zum gesetzten Preis verkauft werden kan
 	{
 		return 1;
+	}
+	private void checkEvents()
+	{
+		if (eventName == "")
+		{
+			
+		}
 	}
 }
