@@ -17,11 +17,11 @@ public class Upgrademanager {
 	}
 
 	private void setUpgrades() {
-		for (int i = 0; i < 3; i++) {
-			upgradesStorage[i] = new Upgrade(i);
+		for (int id = 0; id < 3; id++) {
+			upgradesStorage[id] = new Upgrade(id, bank);
 		}
-		for (int i = 0; i < 3; i++) {
-			upgradesOutput[i+3] = new Upgrade(i+3);
+		for (int id = 0; id < 3; id++) {
+			upgradesOutput[id] = new Upgrade(id+3, bank);
 		}
 	}
 	
@@ -50,4 +50,5 @@ public class Upgrademanager {
 		brewery.upgradeOutput(getUpgradeOutputById(id).getEffects());
 		brewery.upgradeRoundlyCosts(getUpgradeOutputById(id).getRoundlyCosts());
 	}
+	
 }

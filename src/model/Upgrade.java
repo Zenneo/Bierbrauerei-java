@@ -10,9 +10,11 @@ public class Upgrade {
 	private int[] roundlyCosts;
 	private String[] descriptions;
 	private int id;
+	private Bank bank;
 
-	public Upgrade(int ini_id) {
+	public Upgrade(int ini_id, Bank bank_ini) {
 		id = ini_id;
+		bank = bank_ini;
 	}
 
 	public int getCosts() {
@@ -29,6 +31,10 @@ public class Upgrade {
 
 	public String getDescriptions() {
 		return descriptions[id];
+	}
+	
+	public boolean isPossible() {
+		return bank.getCapital() >= costs[id];
 	}
 
 }
