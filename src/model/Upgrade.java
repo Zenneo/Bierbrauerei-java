@@ -5,10 +5,10 @@ public class Upgrade {
 
 	// --variables--
 
-	private int[] costs;
-	private int[] effects;
-	private int[] roundlyCosts;
-	private String[] descriptions;
+	private int[] costs = {2000, 3850, 7500, 2000, 3750, 9000};
+	private int[] effects = {100, 200, 400, 5, 20, 500};
+	private int[] roundlyCosts = {100, 150, 220, 0, 300, 500};
+	private String[] descriptions = {"Regal", "kleiner Anbau", "Lager Halle", "Säuberung", "dickere Rohre", "Kessel"};
 	private int id;
 	private Bank bank;
 
