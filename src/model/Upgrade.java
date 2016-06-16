@@ -15,7 +15,7 @@ public class Upgrade {
 	public Upgrade(int ini_id, Bank bank_ini) {
 		id = ini_id;
 		bank = bank_ini;
-	}
+	} 
 
 	public int getCosts() {
 		return costs[id];
