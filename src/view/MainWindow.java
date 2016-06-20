@@ -31,6 +31,7 @@ import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.graphics.Point;
 
 public class MainWindow {
 
@@ -72,7 +73,8 @@ public class MainWindow {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(551, 363);
+		shell.setMinimumSize(new Point(600, 400));
+		shell.setSize(509, 401);
 		shell.setText("SWT Application");
 		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
@@ -82,17 +84,45 @@ public class MainWindow {
 		SashForm sashForm = new SashForm(GameView, SWT.VERTICAL);
 		
 		Composite Head = new Composite(sashForm, SWT.NONE);
-		RowLayout rl_Head = new RowLayout(SWT.HORIZONTAL);
-		rl_Head.center = true;
-		Head.setLayout(rl_Head);
+		Head.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		Button buttonNextRound = new Button(Head, SWT.NONE);
+		Button buttonNextRound = new Button(Head, SWT.CENTER);
+		buttonNextRound.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+			}
+		});
 		buttonNextRound.setText("Zum n\u00E4chster Tag");
 		
 		Composite Top = new Composite(sashForm, SWT.NONE);
 		Top.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		Composite TopLeft = new Composite(Top, SWT.NONE);
+		Group TopLeft = new Group(Top, SWT.NONE);
+		TopLeft.setText("Markt");
+		TopLeft.setLayout(new FillLayout(SWT.VERTICAL));
+		
+		SashForm sashForm_2 = new SashForm(TopLeft, SWT.VERTICAL);
+		
+		Label beerPrice = new Label(sashForm_2, SWT.NONE);
+		beerPrice.setText("Bierpreis");
+		
+		SashForm price = new SashForm(sashForm_2, SWT.NONE);
+		
+		Scale price_scale = new Scale(price, SWT.NONE);
+		
+		Spinner price_spinner = new Spinner(price, SWT.BORDER);
+		price.setWeights(new int[] {1, 1});
+		
+		Label beerAmount = new Label(sashForm_2, SWT.NONE);
+		beerAmount.setText("Biermenge");
+		
+		SashForm amount = new SashForm(sashForm_2, SWT.NONE);
+		
+		Scale amount_scale = new Scale(amount, SWT.NONE);
+		
+		Spinner amount_spinner = new Spinner(amount, SWT.BORDER);
+		amount.setWeights(new int[] {2, 2, 4, 1});
+		sashForm_2.setWeights(new int[] {1, 2, 1, 2});
 		
 		Group TopRight = new Group(Top, SWT.NONE);
 		TopRight.setText("B\u00FCro");
@@ -108,11 +138,22 @@ public class MainWindow {
 		grpAuftrage.setText("Auftr\u00E4ge");
 		grpAuftrage.setLayout(new FillLayout(SWT.VERTICAL));
 		
+		Label pendingEvents = new Label(grpAuftrage, SWT.NONE);
+		pendingEvents.setText("New Label");
+		
 		Composite Bottom = new Composite(sashForm, SWT.NONE);
 		Bottom.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
 		Group BottomLeft = new Group(Bottom, SWT.NONE);
 		BottomLeft.setText("Brauerei");
+		
+		Label capacity = new Label(BottomLeft, SWT.NONE);
+		capacity.setBounds(10, 25, 55, 15);
+		capacity.setText("Kapazit\u00E4t");
+		
+		Label storage = new Label(BottomLeft, SWT.NONE);
+		storage.setBounds(10, 46, 55, 15);
+		storage.setText("Lager");
 		
 		Group BottomRight = new Group(Bottom, SWT.NONE);
 		BottomRight.setText("Upgrade");
