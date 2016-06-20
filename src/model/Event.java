@@ -6,8 +6,10 @@ public class Event {
 		// TODO Auto-generated method stub
 
 	}
-    public void getEvent(int round)
+    public ReturnEvent getEvent(int round)
     {
+    	ReturnEvent currentEvent = new ReturnEvent("DemoEvent", "Zu Demozwecken fordert dieser Auftrag von dir 100 F‰ﬂer Bier.", 2500, 100, 5);
+		return currentEvent;
     	
     }
 }

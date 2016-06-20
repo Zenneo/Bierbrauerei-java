@@ -40,7 +40,11 @@ public class RoundManager {
 		brewery.produce();
 		bank.payOut(brewery.getRoundlyCosts());
 		sell();
-		checkEvents();
+		eventDurability = eventDurability - 1;
+		if (eventName == "" || eventDurability < 1)
+		{
+			getNewEvent();
+		}
 		// increment round counter
 		round++;
 	}
@@ -74,7 +78,8 @@ public class RoundManager {
 	}
 	public void executeEvent()
 	{
-		
+		bank.payIn(eventPrice);
+		brewery.removeBeer(eventAmount);
 	}
 	private void sell()
 	{
@@ -86,11 +91,33 @@ public class RoundManager {
 	{
 		return 1;
 	}
-	private void checkEvents()
+	private void getNewEvent()
+	{
+		ReturnEvent newEvent = event.getEvent(round);
+		eventName = newEvent.geteventName();
+		eventDescription = newEvent.geteventDescription();
+		eventPrice = newEvent.geteventPrice();
+		eventAmount = newEvent.geteventAmount();
+		eventDurability = newEvent.geteventDurability();
+	}
+	public boolean checkEventAvailability()
 	{
 		if (eventName == "")
 		{
-			
+			return false;
+		} else if (eventName != "") {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public boolean checkEventPosibility()
+	{
+		if (eventAmount <= brewery.getStorage())
+		{
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
