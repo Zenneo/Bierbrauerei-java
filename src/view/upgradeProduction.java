@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 
-public class upgradeStorage extends Dialog {
+public class upgradeProduction extends Dialog {
 
 	protected Object result;
 	protected Shell shlLagerupgrades;
@@ -23,7 +23,7 @@ public class upgradeStorage extends Dialog {
 	 * @param parent
 	 * @param style
 	 */
-	public upgradeStorage(Shell parent, int style) {
+	public upgradeProduction(Shell parent, int style) {
 		super(parent, style);
 		setText("SWT Dialog");
 	}
@@ -52,7 +52,7 @@ public class upgradeStorage extends Dialog {
 		shlLagerupgrades = new Shell(getParent(), getStyle());
 		shlLagerupgrades.setMinimumSize(new Point(100, 100));
 		shlLagerupgrades.setSize(344, 182);
-		shlLagerupgrades.setText("Lager-Upgrades");
+		shlLagerupgrades.setText("Produktions-Upgrades");
 		shlLagerupgrades.setLayout(new FillLayout(SWT.VERTICAL));
 		
 		SashForm sashForm = new SashForm(shlLagerupgrades, SWT.VERTICAL);

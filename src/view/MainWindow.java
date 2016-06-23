@@ -32,10 +32,15 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.custom.CLabel;
 
 public class MainWindow {
 
 	protected Shell shell;
+	private Text txtAdfasdfAsdfAsdf;
+	private Text eventDescription;
 
 	/**
 	 * Launch the application.
@@ -126,20 +131,30 @@ public class MainWindow {
 		
 		Group TopRight = new Group(Top, SWT.NONE);
 		TopRight.setText("B\u00FCro");
-		TopRight.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
+		TopRight.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		Label konto = new Label(TopRight, SWT.NONE);
+		SashForm sashForm_1 = new SashForm(TopRight, SWT.VERTICAL);
+		
+		Label konto = new Label(sashForm_1, SWT.NONE);
 		konto.setText("Konto: xyz");
 		
-		Label kosten = new Label(TopRight, SWT.NONE);
+		Label kosten = new Label(sashForm_1, SWT.NONE);
 		kosten.setText("Kosten: xyz");
 		
-		Group grpAuftrage = new Group(TopRight, SWT.NONE);
+		Group grpAuftrage = new Group(sashForm_1, SWT.NONE);
 		grpAuftrage.setText("Auftr\u00E4ge");
 		grpAuftrage.setLayout(new FillLayout(SWT.VERTICAL));
 		
-		Label pendingEvents = new Label(grpAuftrage, SWT.NONE);
-		pendingEvents.setText("New Label");
+		SashForm sashForm_3 = new SashForm(grpAuftrage, SWT.VERTICAL);
+		
+		Label eventTitle = new Label(sashForm_3, SWT.NONE);
+		eventTitle.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
+		eventTitle.setText("eventTitle");
+		
+		eventDescription = new Text(sashForm_3, SWT.BORDER | SWT.READ_ONLY | SWT.WRAP | SWT.V_SCROLL | SWT.MULTI);
+		eventDescription.setText("afadf  asdf asdff asddaf aa sdf sdf sadf sdaf asdf asdjkfjskldj l klsjf lksjfkl jkl\u00F6jfkl\u00F6j\u00F6jiojao fjopij opjp oiaetuiop hz uioh opiuo  a");
+		sashForm_3.setWeights(new int[] {1, 5});
+		sashForm_1.setWeights(new int[] {1, 1, 7});
 		
 		Composite Bottom = new Composite(sashForm, SWT.NONE);
 		Bottom.setLayout(new FillLayout(SWT.HORIZONTAL));
@@ -168,7 +183,7 @@ public class MainWindow {
 		LagerButton.setText("Lager");
 		
 		Button btnNewButton_1 = new Button(BottomRight, SWT.NONE);
-		btnNewButton_1.setText("Produkte");
+		btnNewButton_1.setText("Produktion");
 		sashForm.setWeights(new int[] {2, 5, 5});
 	}
 }
