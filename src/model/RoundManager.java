@@ -40,7 +40,7 @@ public class RoundManager {
 		brewery.produce();
 		bank.payOut(brewery.getRoundlyCosts());
 		sell();
-		eventDurability = eventDurability - 1;
+		eventDurability--;
 		if (eventName == "" || eventDurability < 1)
 		{
 			getNewEvent();
@@ -76,10 +76,11 @@ public class RoundManager {
 			return false;
 		}
 	}
-	public void executeEvent()
+	public void executeEvent() //Gibt Geld, zieht Bier ab und fordert neues Event an
 	{
 		bank.payIn(eventPrice);
 		brewery.removeBeer(eventAmount);
+		getNewEvent();
 	}
 	private void sell()
 	{
@@ -100,7 +101,7 @@ public class RoundManager {
 		eventAmount = newEvent.geteventAmount();
 		eventDurability = newEvent.geteventDurability();
 	}
-	public boolean checkEventAvailability()
+	public boolean checkEventAvailability() //Überprüft ob Event da ist
 	{
 		if (eventName == "")
 		{
@@ -111,7 +112,7 @@ public class RoundManager {
 			return false;
 		}
 	}
-	public boolean checkEventPosibility()
+	public boolean checkEventPosibility() //Überprüft ob event auch erfüllbar ist
 	{
 		if (eventAmount <= brewery.getStorage())
 		{
@@ -119,5 +120,46 @@ public class RoundManager {
 		} else {
 			return false;
 		}
+	}
+	//simple getter methods
+	public int getUpgradeStorageEffect(int tier)
+	{
+		Upgrade[] upgrade = upgrademanager.getUpgradesStorage();
+		return upgrade[tier].getEffects();
+	}
+	public int getUpgradeStoragePrice(int tier)
+	{
+		Upgrade[] upgrade = upgrademanager.getUpgradesStorage();
+		return upgrade[tier].getCosts();
+	}
+	public int getUpgradeOutputEffect(int tier)
+	{
+		Upgrade[] upgrade = upgrademanager.getUpgradesOutput();
+		return upgrade[tier].getEffects();
+	}
+	public int getUpgradeOutputPrice(int tier)
+	{
+		Upgrade[] upgrade = upgrademanager.getUpgradesOutput();
+		return upgrade[tier].getCosts();
+	}
+	public String getEventName()
+	{
+		return eventName;
+	}
+	public String getEventDescription()
+	{
+		return eventDescription;
+	}
+	public int getEventPrice()
+	{
+		return eventPrice;
+	}
+	public int getEventAmount()
+	{
+		return eventAmount;
+	}
+	public int getEventDurability()
+	{
+		return eventDurability;
 	}
 }
