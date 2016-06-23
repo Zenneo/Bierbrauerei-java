@@ -5,17 +5,18 @@ public class RoundManager {
 	// --variables--
 
 	private int round = 0;
-    private Bank bank;
-    private Brewery brewery;
-    private Upgrademanager upgrademanager;
-    private Event event;
-    private int sellOrderPrice;
-    private int sellOrderBier;
-    private String eventName;
-    private String eventDescription;
-    private int eventPrice;
-    private int eventAmount;
-    private int eventDurability;
+	private Bank bank;
+	private Brewery brewery;
+	private Upgrademanager upgrademanager;
+	private Event event;
+	private int sellOrderPrice;
+	private int sellOrderBier;
+	private String eventName;
+	private String eventDescription;
+	private int eventPrice;
+	private int eventAmount;
+	private int eventDurability;
+
 	public int getRound() {
 		return round;
 	}
@@ -33,67 +34,74 @@ public class RoundManager {
 		eventAmount = 0;
 		eventDurability = 0;
 	}
-	
-	// does every operation and finishes a round if everything is valid 
+
+	// does every operation and finishes a round if everything is valid
 	public void nextRound() {
 		// TODO not done yet
 		brewery.produce();
 		bank.payOut(brewery.getRoundlyCosts());
 		sell();
 		eventDurability--;
-		if (eventName == "" || eventDurability < 1)
-		{
+		if (eventName == "" || eventDurability < 1) {
 			getNewEvent();
 		}
 		// increment round counter
 		round++;
 	}
+
 	public void purchaseUpgrade(int typ, int tier) {
-		//typ = 0 => storage
-		//typ = 1 => output
-		if (typ == 0)
-		{
+		// typ = 0 => storage
+		// typ = 1 => output
+		if (typ == 0) {
 			upgrademanager.buyUpgradeStorage(tier);
 		} else if (typ == 1) {
 			upgrademanager.buyUpgradeOutput(tier);
 		}
 	}
-	public void placeSellOrder(int biermenge, int preis)
-	{
-		if (sellOrderBier == 0)
-		{
+
+	public void placeSellOrder(int biermenge, int preis) {
+		if (sellOrderBier == 0) {
 			sellOrderBier = biermenge;
 			sellOrderPrice = preis;
 			brewery.removeBeer(biermenge);
 		}
 	}
-	public boolean isSellable() //Überprüft ob etwas gekauft werden darf
+
+	public boolean isSellable() // Überprüft ob etwas gekauft werden darf
 	{
-		if (sellOrderBier == 0)
-		{
+		if (sellOrderBier == 0) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	public void executeEvent() //Gibt Geld, zieht Bier ab und fordert neues Event an
+
+	public void executeEvent() // Gibt Geld, zieht Bier ab und fordert neues
+								// Event an
 	{
 		bank.payIn(eventPrice);
 		brewery.removeBeer(eventAmount);
 		getNewEvent();
 	}
-	private void sell()
-	{
-		bank.payIn(sellOrderBier*sellOrderPrice*checkMarket());
+
+	private void sell() {
+		bank.payIn(sellOrderBier * sellOrderPrice * checkMarket());
 		sellOrderBier = 0;
 		sellOrderPrice = 0;
 	}
-	private int checkMarket() //Überprüft, weiviel der Menge zum gesetzten Preis verkauft werden kan
+
+	private int checkMarket() // Überprüft, weiviel der Menge zum gesetzten
+								// Preis verkauft werden kann
 	{
-		return 1;
+		int demand = 100 - sellOrderPrice;
+		if (demand >= sellOrderBier) {
+			return 1;
+		} else {
+			return demand / sellOrderBier;
+		}
 	}
-	private void getNewEvent()
-	{
+
+	private void getNewEvent() {
 		ReturnEvent newEvent = event.getEvent(round);
 		eventName = newEvent.geteventName();
 		eventDescription = newEvent.geteventDescription();
@@ -101,10 +109,10 @@ public class RoundManager {
 		eventAmount = newEvent.geteventAmount();
 		eventDurability = newEvent.geteventDurability();
 	}
-	public boolean checkEventAvailability() //Überprüft ob Event da ist
+
+	public boolean checkEventAvailability() // Überprüft ob Event da ist
 	{
-		if (eventName == "")
-		{
+		if (eventName == "") {
 			return false;
 		} else if (eventName != "") {
 			return true;
@@ -112,54 +120,55 @@ public class RoundManager {
 			return false;
 		}
 	}
-	public boolean checkEventPosibility() //Überprüft ob event auch erfüllbar ist
+
+	public boolean checkEventPosibility() // Überprüft ob event auch erfüllbar
+											// ist
 	{
-		if (eventAmount <= brewery.getStorage())
-		{
+		if (eventAmount <= brewery.getStorage()) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	//simple getter methods
-	public int getUpgradeStorageEffect(int tier)
-	{
+
+	// simple getter methods
+	public int getUpgradeStorageEffect(int tier) {
 		Upgrade[] upgrade = upgrademanager.getUpgradesStorage();
 		return upgrade[tier].getEffects();
 	}
-	public int getUpgradeStoragePrice(int tier)
-	{
+
+	public int getUpgradeStoragePrice(int tier) {
 		Upgrade[] upgrade = upgrademanager.getUpgradesStorage();
 		return upgrade[tier].getCosts();
 	}
-	public int getUpgradeOutputEffect(int tier)
-	{
+
+	public int getUpgradeOutputEffect(int tier) {
 		Upgrade[] upgrade = upgrademanager.getUpgradesOutput();
 		return upgrade[tier].getEffects();
 	}
-	public int getUpgradeOutputPrice(int tier)
-	{
+
+	public int getUpgradeOutputPrice(int tier) {
 		Upgrade[] upgrade = upgrademanager.getUpgradesOutput();
 		return upgrade[tier].getCosts();
 	}
-	public String getEventName()
-	{
+
+	public String getEventName() {
 		return eventName;
 	}
-	public String getEventDescription()
-	{
+
+	public String getEventDescription() {
 		return eventDescription;
 	}
-	public int getEventPrice()
-	{
+
+	public int getEventPrice() {
 		return eventPrice;
 	}
-	public int getEventAmount()
-	{
+
+	public int getEventAmount() {
 		return eventAmount;
 	}
-	public int getEventDurability()
-	{
+
+	public int getEventDurability() {
 		return eventDurability;
 	}
 }
