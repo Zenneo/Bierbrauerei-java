@@ -6,6 +6,8 @@ import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.events.*;
 
 import model.*;
 
@@ -149,8 +151,18 @@ public class MainWindow {
 		});
 		LagerButton.setText("Lager");
 		
-		Button btnNewButton_1 = new Button(BottomRight, SWT.NONE);
-		btnNewButton_1.setText("Produkte");
+		Button ProdukteButton = new Button(BottomRight, SWT.NONE);
+		ProdukteButton.setText("Produkte");
 		sashForm.setWeights(new int[] {2, 5, 5});
+		
+		ProdukteButton.addListener(SWT.Selection, new Listener() {
+		      public void handleEvent(Event e) {
+		        switch (e.type) {
+		        case SWT.Selection:
+
+		          break;
+		        }
+		      }
+		    });
 	}
 }
