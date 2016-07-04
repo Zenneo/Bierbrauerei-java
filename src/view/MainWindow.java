@@ -96,7 +96,7 @@ public class MainWindow {
 		Scale price_scale = new Scale(price, SWT.NONE);
 		
 		Spinner price_spinner = new Spinner(price, SWT.BORDER);
-		price.setWeights(new int[] {4, 1});
+		price.setWeights(new int[] {1, 1});
 		
 		Label beerAmount = new Label(sashForm_2, SWT.NONE);
 		beerAmount.setText("Biermenge");
@@ -106,7 +106,7 @@ public class MainWindow {
 		Scale amount_scale = new Scale(amount, SWT.NONE);
 		
 		Spinner amount_spinner = new Spinner(amount, SWT.BORDER);
-		amount.setWeights(new int[] {4, 1});
+		amount.setWeights(new int[] {2, 2, 4, 1});
 		sashForm_2.setWeights(new int[] {1, 2, 1, 2});
 		
 		Group TopRight = new Group(Top, SWT.NONE);
