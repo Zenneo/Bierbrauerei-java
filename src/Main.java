@@ -1,13 +1,14 @@
-import model.Brewery;
+import model.*;
+import view.*;
 
 
 public class Main {
 	public static void main(String args[]) {
-		System.out.println("fagasf2");
+		RoundManager roundmanager = new RoundManager();
 		
-		
-		// TODO create remaining objects
-		Brewery brewery1 = new Brewery(0, 0);
+		// create main window
+		MainWindow mainWindow = new MainWindow(roundmanager);
+		mainWindow.open();
 		
 	}
 }
