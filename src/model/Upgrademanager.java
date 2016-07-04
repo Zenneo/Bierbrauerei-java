@@ -11,9 +11,11 @@ public class Upgrademanager {
 	private Upgrade[] upgradesOutput;
 	
 	public Upgrademanager(Bank bank_ini, Brewery brewery_ini) {
-		setUpgrades();
 		bank = bank_ini;
 		brewery = brewery_ini;
+		upgradesStorage = new Upgrade[3];
+		upgradesOutput = new Upgrade[3];
+		setUpgrades();
 	}
 
 	private void setUpgrades() {
