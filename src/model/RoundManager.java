@@ -5,10 +5,10 @@ public class RoundManager {
 	// --variables--
 
 	private int round = 0;
-	private Bank bank;
-	private Brewery brewery;
-	private Upgrademanager upgrademanager;
-	private Event event;
+	public Bank bank;
+	public Brewery brewery;
+	public Upgrademanager upgrademanager;
+	public Event event;
 	private int sellOrderPrice;
 	private int sellOrderBier;
 	private String eventName;
