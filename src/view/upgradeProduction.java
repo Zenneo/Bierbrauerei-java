@@ -1,5 +1,5 @@
 package view;
-
+import model.*;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -21,7 +21,7 @@ public class upgradeProduction extends Dialog {
 	 * @param parent
 	 * @param style
 	 */
-	public upgradeProduction(Shell parent, int style) {
+	public upgradeProduction(Shell parent, int style, RoundManager roundmanager) {
 		super(parent, style);
 		setText("SWT Dialog");
 	}

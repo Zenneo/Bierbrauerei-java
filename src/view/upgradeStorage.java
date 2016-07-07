@@ -1,18 +1,13 @@
 package view;
 
-import org.eclipse.swt.widgets.Dialog;
-import org.eclipse.swt.widgets.Display;
+import model.*;
+
+import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.graphics.*;
+import org.eclipse.swt.layout.*;
 import org.eclipse.swt.*;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.events.*;
 
 public class upgradeStorage extends Dialog {
@@ -26,7 +21,7 @@ public class upgradeStorage extends Dialog {
 	 * @param parent
 	 * @param style
 	 */
-	public upgradeStorage(Shell parent, int style) {
+	public upgradeStorage(Shell parent, int style, RoundManager roundmanager) {
 		super(parent, style);
 		setText("SWT Dialog");
 		
