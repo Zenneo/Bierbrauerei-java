@@ -15,6 +15,7 @@ public class upgradeStorage extends Dialog {
 	protected Object result;
 	protected Shell shlLagerupgrades;
 	public RoundManager roundmanager;
+
 	/**
 	 * Create the dialog.
 	 * 
@@ -55,15 +56,15 @@ public class upgradeStorage extends Dialog {
 		int upgradesmallPrice = roundmanager.getUpgradeStoragePrice(0);
 		int upgrademediumPrice = roundmanager.getUpgradeStoragePrice(1);
 		int upgradebigPrice = roundmanager.getUpgradeStoragePrice(2);
-		
+
 		String smallEffect = "" + upgradesmallEffect;
 		String mediumEffect = "" + upgrademediumEffect;
 		String bigEffect = "" + upgradebigEffect;
-		
+
 		String smallPrice = "" + upgradesmallPrice;
 		String mediumPrice = "" + upgrademediumPrice;
 		String bigPrice = "" + upgradebigPrice;
-		
+
 		shlLagerupgrades = new Shell(getParent(), SWT.DIALOG_TRIM
 				| SWT.SYSTEM_MODAL);
 		shlLagerupgrades.setMinimumSize(new Point(100, 100));
@@ -125,34 +126,34 @@ public class upgradeStorage extends Dialog {
 		sashForm_5.setWeights(new int[] { 5, 1 });
 		sashForm_1.setWeights(new int[] { 1, 1, 1 });
 		sashForm.setWeights(new int[] { 2, 5 });
-		
+
 		upgrade_small.addListener(SWT.Selection, new Listener() {
-		      public void handleEvent(Event e) {
-		        switch (e.type) {
-		        case SWT.Selection:
-		        roundmanager.purchaseUpgrade(0, 0);
-		          break;
-		        }
-		      }
-		    });
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					roundmanager.purchaseUpgrade(0, 0);
+					break;
+				}
+			}
+		});
 		upgrade_medium.addListener(SWT.Selection, new Listener() {
-		      public void handleEvent(Event e) {
-		        switch (e.type) {
-		        case SWT.Selection:
-		        roundmanager.purchaseUpgrade(0, 1);
-		          break;
-		        }
-		      }
-		    });
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					roundmanager.purchaseUpgrade(0, 1);
+					break;
+				}
+			}
+		});
 		upgrade_big.addListener(SWT.Selection, new Listener() {
-		      public void handleEvent(Event e) {
-		        switch (e.type) {
-		        case SWT.Selection:
-		        roundmanager.purchaseUpgrade(0, 2);
-		          break;
-		        }
-		      }
-		    });
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					roundmanager.purchaseUpgrade(0, 2);
+					break;
+				}
+			}
+		});
 
 	}
 
