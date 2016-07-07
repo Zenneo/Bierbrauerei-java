@@ -185,4 +185,7 @@ public class RoundManager {
 	public int getEventDurability() {
 		return eventDurability;
 	}
+	public int getCapital() {
+		return bank.getCapital();
+	}
 }
