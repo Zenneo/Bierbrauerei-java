@@ -9,6 +9,6 @@ public class Main {
 		// create main window
 		MainWindow mainWindow = new MainWindow(roundmanager);
 		mainWindow.open();
-		
+		roundmanager.getNewEvent();
 	}
 }

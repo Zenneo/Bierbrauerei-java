@@ -101,7 +101,7 @@ public class RoundManager {
 		}
 	}
 
-	private void getNewEvent() {
+	public void getNewEvent() {
 		ReturnEvent newEvent = event.getEvent(round);
 		eventName = newEvent.geteventName();
 		eventDescription = newEvent.geteventDescription();

@@ -17,7 +17,7 @@ public class Event {
 
 			// connect to db
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:.db");
+			c = DriverManager.getConnection("jdbc:sqlite:bier_db.db");
 			c.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 
