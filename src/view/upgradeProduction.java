@@ -57,6 +57,7 @@ public class upgradeProduction extends Dialog {
 		int upgradesmallPrice = roundmanager.getUpgradeOutputPrice(0);
 		int upgrademediumPrice = roundmanager.getUpgradeOutputPrice(1);
 		int upgradebigPrice = roundmanager.getUpgradeOutputPrice(2);
+		int capital = roundmanager.getCapital();
 		
 		String smallEffect = "" + upgradesmallEffect;
 		String mediumEffect = "" + upgrademediumEffect;
@@ -65,6 +66,7 @@ public class upgradeProduction extends Dialog {
 		String smallPrice = "" + upgradesmallPrice;
 		String mediumPrice = "" + upgrademediumPrice;
 		String bigPrice = "" + upgradebigPrice;
+		String strcapital = "" + capital;
 		
 		
 		shlLagerupgrades = new Shell(getParent(), getStyle());
@@ -78,11 +80,11 @@ public class upgradeProduction extends Dialog {
 		SashForm sashForm_2 = new SashForm(sashForm, SWT.NONE);
 		
 		Label lblNewLabel = new Label(sashForm_2, SWT.NONE);
-		lblNewLabel.setText("W\u00E4hle ein Upgrade!");
+		lblNewLabel.setText(strcapital);
 		
-		Label lblNewLabel_1 = new Label(sashForm_2, SWT.NONE);
-		lblNewLabel_1.setAlignment(SWT.RIGHT);
-		lblNewLabel_1.setText("Aktuelles Kapital: 1002\u20AC");
+		Label capitalLabel = new Label(sashForm_2, SWT.NONE);
+		capitalLabel.setAlignment(SWT.RIGHT);
+		capitalLabel.setText("Aktuelles Kapital: 1002\u20AC");
 		sashForm_2.setWeights(new int[] {1, 1});
 		
 		Group grpUpgrades = new Group(sashForm, SWT.NONE);

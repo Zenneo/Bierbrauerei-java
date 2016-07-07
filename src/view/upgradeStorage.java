@@ -56,6 +56,7 @@ public class upgradeStorage extends Dialog {
 		int upgradesmallPrice = roundmanager.getUpgradeStoragePrice(0);
 		int upgrademediumPrice = roundmanager.getUpgradeStoragePrice(1);
 		int upgradebigPrice = roundmanager.getUpgradeStoragePrice(2);
+		int capital = roundmanager.getCapital();
 
 		String smallEffect = "" + upgradesmallEffect;
 		String mediumEffect = "" + upgrademediumEffect;
@@ -64,6 +65,7 @@ public class upgradeStorage extends Dialog {
 		String smallPrice = "" + upgradesmallPrice;
 		String mediumPrice = "" + upgrademediumPrice;
 		String bigPrice = "" + upgradebigPrice;
+		String strcapital = "" + capital;
 
 		shlLagerupgrades = new Shell(getParent(), SWT.DIALOG_TRIM
 				| SWT.SYSTEM_MODAL);
@@ -79,9 +81,9 @@ public class upgradeStorage extends Dialog {
 		Label lblNewLabel = new Label(sashForm_2, SWT.NONE);
 		lblNewLabel.setText("W\u00E4hle ein Upgrade!");
 
-		Label lblNewLabel_1 = new Label(sashForm_2, SWT.NONE);
-		lblNewLabel_1.setAlignment(SWT.RIGHT);
-		lblNewLabel_1.setText("Aktuelles Kapital: 1002\u20AC");
+		Label capitalLabel = new Label(sashForm_2, SWT.NONE);
+		capitalLabel.setAlignment(SWT.RIGHT);
+		capitalLabel.setText(strcapital);
 		sashForm_2.setWeights(new int[] { 1, 1 });
 
 		Group grpUpgrades = new Group(sashForm, SWT.NONE);

@@ -23,13 +23,19 @@ public class MainWindow {
 
 	private RoundManager roundmanager;
 
+	// public UI elements
+	private Label konto;
+	private Label kosten;
+	private Label capacity;
+	private Label storage;
+
 	// constructor
 	public MainWindow(RoundManager roundmanager) {
 		this.roundmanager = roundmanager;
 	}
 
 	/**
-	 * Open the window.
+	 * @wbp.parser.entryPoint
 	 */
 	public void open() {
 		Display display = Display.getDefault();
@@ -44,9 +50,6 @@ public class MainWindow {
 
 	}
 
-	/**
-	 * Create contents of the window.
-	 */
 	protected void createContents() {
 		shell = new Shell();
 		shell.setMinimumSize(new Point(600, 400));
@@ -70,6 +73,7 @@ public class MainWindow {
 				case SWT.Selection:
 					System.out.println("NextRoundButton");
 					roundmanager.nextRound();
+					fetchUIData();
 					break;
 				}
 			}
@@ -112,10 +116,10 @@ public class MainWindow {
 
 		SashForm sashForm_1 = new SashForm(TopRight, SWT.VERTICAL);
 
-		Label konto = new Label(sashForm_1, SWT.NONE);
+		konto = new Label(sashForm_1, SWT.NONE);
 		konto.setText("Konto: xyz");
 
-		Label kosten = new Label(sashForm_1, SWT.NONE);
+		kosten = new Label(sashForm_1, SWT.NONE);
 		kosten.setText("Kosten: xyz");
 
 		Group grpAuftrage = new Group(sashForm_1, SWT.NONE);
@@ -132,11 +136,11 @@ public class MainWindow {
 		Group BottomLeft = new Group(Bottom, SWT.NONE);
 		BottomLeft.setText("Brauerei");
 
-		Label capacity = new Label(BottomLeft, SWT.NONE);
+		capacity = new Label(BottomLeft, SWT.NONE);
 		capacity.setBounds(10, 25, 55, 15);
 		capacity.setText("Kapazit\u00E4t");
 
-		Label storage = new Label(BottomLeft, SWT.NONE);
+		storage = new Label(BottomLeft, SWT.NONE);
 		storage.setBounds(10, 46, 55, 15);
 		storage.setText("Lager");
 
@@ -190,5 +194,28 @@ public class MainWindow {
 				}
 			}
 		});
+	}
+
+	public void fetchUIData() {
+		konto.setText("Kontostand: " + roundmanager.getCapital());
+		kosten.setText("Kosten: " + roundmanager.getRoundlyCosts()); // Lukas
+																		// muss
+																		// die
+																		// noch
+																		// hinzufügen,
+																		// direkter
+																		// Aufruf
+																		// der
+																		// Bank
+																		// und
+																		// Brewery
+																		// sind
+																		// nicht
+																		// erlaubt
+																		// (laut
+																		// Lukas)
+		capacity.setText("Lager-Kapazität: "
+				+ roundmanager.getStorageMaxSpace());
+		storage.setText("Lagernutzung: " + roundmanager.get);
 	}
 }
