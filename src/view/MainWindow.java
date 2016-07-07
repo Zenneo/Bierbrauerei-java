@@ -21,21 +21,11 @@ public class MainWindow {
 	 * @param args
 	 */
 
-	private static RoundManager roundmanager;
+	private RoundManager roundmanager;
 
 	// constructor
 	public MainWindow(RoundManager roundmanager) {
-		MainWindow.roundmanager = roundmanager;
-	}
-
-	public static void main(String[] args) {
-		try {
-			MainWindow window = new MainWindow(roundmanager);
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		this.roundmanager = roundmanager;
 	}
 
 	/**
