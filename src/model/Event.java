@@ -28,7 +28,9 @@ public class Event {
 			ResultSetMetaData metaData = rs.getMetaData();
 			int rowcount = metaData.getColumnCount();
 			int random = (int) Math.floor(Math.random() * rowcount);
+			System.out.println(rs.next());
 			while (rs.next()) {
+				System.out.println("Test" + rs.getInt("amountFactor"));
 				if (random <= 0) {
 					eventAmount = rs.getInt("amountFactor") * round
 							+ rs.getInt("amountOffset");

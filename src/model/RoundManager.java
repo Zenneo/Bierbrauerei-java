@@ -124,6 +124,7 @@ public class RoundManager {
 		eventPrice = newEvent.geteventPrice();
 		eventAmount = newEvent.geteventAmount();
 		eventDurability = newEvent.geteventDurability();
+		System.out.println("Eventüberprüferr: " + eventName + eventDescription + eventPrice + eventAmount + eventDurability);
 	}
 
 	public boolean checkEventAvailability() // Überprüft ob Event da ist
