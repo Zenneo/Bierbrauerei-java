@@ -37,7 +37,6 @@ public class RoundManager {
 
 	// does every operation and finishes a round if everything is valid
 	public void nextRound() {
-		// TODO not done yet
 		brewery.produce();
 		bank.payOut(brewery.getRoundlyCosts());
 		sell();
@@ -85,20 +84,35 @@ public class RoundManager {
 	}
 
 	private void sell() {
-		bank.payIn(sellOrderBier * sellOrderPrice * checkMarket());
+		bank.payIn((int)(sellOrderBier * sellOrderPrice * checkMarket()));
 		sellOrderBier = 0;
 		sellOrderPrice = 0;
 	}
 
-	private int checkMarket() // Überprüft, weiviel der Menge zum gesetzten
+	private double checkMarket() // Überprüft, weiviel der Menge zum gesetzten
 								// Preis verkauft werden kann
 	{
-		int demand = 100 - sellOrderPrice;
-		if (demand >= sellOrderBier) {
-			return 1;
-		} else {
-			return demand / sellOrderBier;
+		double factor = 0;
+		if (sellOrderPrice < 15) {
+			factor = -(7/3) * sellOrderPrice + 100;
 		}
+		else if (sellOrderPrice < 25) {
+			factor = 1.5 * sellOrderPrice + 42.5;
+		}
+		else if (sellOrderPrice < 45) {
+			factor = -3.75 * sellOrderPrice + 173.75;
+		}
+		else if (sellOrderPrice < 50) {
+			factor = sellOrderPrice - 40;
+		}
+		else if (sellOrderPrice < 60) {
+			factor = -0.9 * sellOrderPrice + 55;
+		}
+		else {
+			factor = 1;
+		}
+		factor = factor + (((int)(Math.random()* 10)) - 5);
+		return factor / 100;
 	}
 
 	private void getNewEvent() {
@@ -112,9 +126,7 @@ public class RoundManager {
 
 	public boolean checkEventAvailability() // Überprüft ob Event da ist
 	{
-		if (eventName == "") {
-			return false;
-		} else if (eventName != "") {
+		if (eventName != "") {
 			return true;
 		} else {
 			return false;
