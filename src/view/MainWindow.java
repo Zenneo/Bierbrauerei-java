@@ -70,6 +70,7 @@ public class MainWindow {
 		SashForm sashForm = new SashForm(GameView, SWT.VERTICAL);
 		
 		Composite Head = new Composite(sashForm, SWT.NONE);;
+		Head.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
 		Button buttonNextRound = new Button(Head, SWT.CENTER);
 		buttonNextRound.addSelectionListener(new SelectionAdapter() {
@@ -111,19 +112,23 @@ public class MainWindow {
 		
 		Group TopRight = new Group(Top, SWT.NONE);
 		TopRight.setText("B\u00FCro");
+		TopRight.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		Label konto = new Label(TopRight, SWT.NONE);
+		SashForm sashForm_1 = new SashForm(TopRight, SWT.VERTICAL);
+		
+		Label konto = new Label(sashForm_1, SWT.NONE);
 		konto.setText("Konto: xyz");
 		
-		Label kosten = new Label(TopRight, SWT.NONE);
+		Label kosten = new Label(sashForm_1, SWT.NONE);
 		kosten.setText("Kosten: xyz");
 		
-		Group grpAuftrage = new Group(TopRight, SWT.NONE);
+		Group grpAuftrage = new Group(sashForm_1, SWT.NONE);
 		grpAuftrage.setText("Auftr\u00E4ge");
 		grpAuftrage.setLayout(new FillLayout(SWT.VERTICAL));
 		
 		Label pendingEvents = new Label(grpAuftrage, SWT.NONE);
 		pendingEvents.setText("New Label");
+		sashForm_1.setWeights(new int[] {1, 1, 5});
 		
 		Composite Bottom = new Composite(sashForm, SWT.NONE);
 		Bottom.setLayout(new FillLayout(SWT.HORIZONTAL));
