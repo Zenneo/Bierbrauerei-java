@@ -70,6 +70,7 @@ public class MainWindow {
 		SashForm sashForm = new SashForm(GameView, SWT.VERTICAL);
 		
 		Composite Head = new Composite(sashForm, SWT.NONE);;
+		Head.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
 		Button buttonNextRound = new Button(Head, SWT.CENTER);
 		buttonNextRound.addSelectionListener(new SelectionAdapter() {
@@ -96,7 +97,7 @@ public class MainWindow {
 		Scale price_scale = new Scale(price, SWT.NONE);
 		
 		Spinner price_spinner = new Spinner(price, SWT.BORDER);
-		price.setWeights(new int[] {1, 1});
+		price.setWeights(new int[] {4, 1});
 		
 		Label beerAmount = new Label(sashForm_2, SWT.NONE);
 		beerAmount.setText("Biermenge");
@@ -106,24 +107,28 @@ public class MainWindow {
 		Scale amount_scale = new Scale(amount, SWT.NONE);
 		
 		Spinner amount_spinner = new Spinner(amount, SWT.BORDER);
-		amount.setWeights(new int[] {2, 2, 4, 1});
+		amount.setWeights(new int[] {4, 1});
 		sashForm_2.setWeights(new int[] {1, 2, 1, 2});
 		
 		Group TopRight = new Group(Top, SWT.NONE);
 		TopRight.setText("B\u00FCro");
+		TopRight.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		Label konto = new Label(TopRight, SWT.NONE);
+		SashForm sashForm_1 = new SashForm(TopRight, SWT.VERTICAL);
+		
+		Label konto = new Label(sashForm_1, SWT.NONE);
 		konto.setText("Konto: xyz");
 		
-		Label kosten = new Label(TopRight, SWT.NONE);
+		Label kosten = new Label(sashForm_1, SWT.NONE);
 		kosten.setText("Kosten: xyz");
 		
-		Group grpAuftrage = new Group(TopRight, SWT.NONE);
+		Group grpAuftrage = new Group(sashForm_1, SWT.NONE);
 		grpAuftrage.setText("Auftr\u00E4ge");
 		grpAuftrage.setLayout(new FillLayout(SWT.VERTICAL));
 		
 		Label pendingEvents = new Label(grpAuftrage, SWT.NONE);
 		pendingEvents.setText("New Label");
+		sashForm_1.setWeights(new int[] {1, 1, 5});
 		
 		Composite Bottom = new Composite(sashForm, SWT.NONE);
 		Bottom.setLayout(new FillLayout(SWT.HORIZONTAL));
