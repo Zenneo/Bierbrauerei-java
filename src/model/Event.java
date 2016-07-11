@@ -12,6 +12,7 @@ public class Event {
 		String eventDescription = "";
 
 		Connection c = null;
+		Statement stmtCount = null;
 		Statement stmt = null;
 		try {
 
@@ -21,17 +22,19 @@ public class Event {
 			c.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 
+			stmtCount = c.createStatement();
 			stmt = c.createStatement();
 
 			// sql query
+			ResultSet count = stmtCount.executeQuery("SELECT count(id) FROM event WHERE minRound < " + round + " AND maxRound > " + round + ";");
 			ResultSet rs = stmt.executeQuery("SELECT * FROM event WHERE minRound < " + round + " AND maxRound > " + round + ";");
-			ResultSetMetaData metaData = rs.getMetaData();
-			int rowcount = metaData.getColumnCount();
-			int random = (int) Math.floor(Math.random() * rowcount);
-			System.out.println(rs.next());
+			int rowcount = count.getInt("count(id)");
+			System.out.println("rowcount: " + rowcount);
+			int random = (int) (Math.random() * rowcount);
+			System.out.println("Round: " + round);
+			System.out.println("Random: " + random);
 			while (rs.next()) {
-				System.out.println("Test" + rs.getInt("amountFactor"));
-				if (random <= 0) {
+				if (random == 0) {
 					eventAmount = rs.getInt("amountFactor") * round
 							+ rs.getInt("amountOffset");
 					eventPrice = rs.getInt("pricePerBeer") * eventAmount;
@@ -43,9 +46,11 @@ public class Event {
 				}
 			}
 			rs.close();
+			count.close();
 
 			// close connection
 			stmt.close();
+			stmtCount.close();
 			c.close();
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
