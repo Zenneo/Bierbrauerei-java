@@ -150,11 +150,26 @@ public class MainWindow {
 		kosten.setText("Kosten: xyz");
 
 		Group grpAuftrage = new Group(sashForm_1, SWT.NONE);
-		grpAuftrage.setText("Auftr\u00E4ge");
+		grpAuftrage.setText("Events");
 		grpAuftrage.setLayout(new FillLayout(SWT.VERTICAL));
 
-		Label pendingEvents = new Label(grpAuftrage, SWT.NONE);
-		pendingEvents.setText("New Label");
+		Label eventName = new Label(grpAuftrage, SWT.NONE);
+		eventName.setText("Name: xyz");
+		
+		Label eventDescription = new Label(grpAuftrage, SWT.NONE);
+		eventDescription.setText("Beschreibung: ");
+		
+		Label eventPrice = new Label(grpAuftrage, SWT.NONE);
+		eventPrice.setText("Preis: xyz");
+		
+		Label eventAmount = new Label(grpAuftrage, SWT.NONE);
+		eventAmount.setText("Ben\u00F6tigte Menge: xyz");
+		
+		Label eventRoundsLeft = new Label(grpAuftrage, SWT.NONE);
+		eventRoundsLeft.setText("Noch \u00FCbrige Runden: xyz");
+		
+		Button doEvent = new Button(grpAuftrage, SWT.NONE);
+		doEvent.setText("Auftrag erf\u00FCllen");
 		sashForm_1.setWeights(new int[] { 1, 1, 5 });
 
 		Composite Bottom = new Composite(sashForm, SWT.NONE);
