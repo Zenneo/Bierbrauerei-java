@@ -189,4 +189,14 @@ public class RoundManager {
 	public int getCapital() {
 		return bank.getCapital();
 	}
+	public int getRoundlyCosts() {
+		return brewery.getRoundlyCosts();
+	}
+	public int getStorageMaxSpace() {
+		return brewery.getStorageMaxSpace();
+	}
+
+	public int getStorage() {
+		return brewery.getStorage();
+	}
 }

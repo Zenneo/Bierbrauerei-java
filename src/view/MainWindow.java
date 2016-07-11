@@ -216,6 +216,6 @@ public class MainWindow {
 																		// Lukas)
 		capacity.setText("Lager-Kapazität: "
 				+ roundmanager.getStorageMaxSpace());
-		storage.setText("Lagernutzung: " + roundmanager.get);
+		storage.setText("Lagernutzung: " + roundmanager.getStorage());
 	}
 }
