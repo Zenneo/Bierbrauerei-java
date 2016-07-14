@@ -28,6 +28,8 @@ public class upgradeProduction extends Dialog {
 	private Label cost_medium;
 	private Button upgrade_big;
 	private Label cost_big;
+	private SashForm sashForm_6;
+	private Label outputLabel;
 
 	/**
 	 * Create the dialog.
@@ -63,24 +65,28 @@ public class upgradeProduction extends Dialog {
 	 * Create contents of the dialog.
 	 */
 	private void createContents() {
-		shell = new Shell(getParent(), SWT.DIALOG_TRIM
-				| SWT.SYSTEM_MODAL);
-		shell.setMinimumSize(new Point(344, 182));
-		shell.setSize(344, 182);
+		shell = new Shell(getParent(), SWT.DIALOG_TRIM | SWT.SYSTEM_MODAL);
+		shell.setMinimumSize(new Point(344, 184));
+		shell.setSize(344, 184);
 		shell.setText("Produktions-Upgrades");
 		shell.setLayout(new FillLayout(SWT.VERTICAL));
 
 		SashForm sashForm = new SashForm(shell, SWT.VERTICAL);
 
-		SashForm sashForm_2 = new SashForm(sashForm, SWT.NONE);
+		SashForm sashForm_2 = new SashForm(sashForm, SWT.VERTICAL);
 
 		Label lblNewLabel = new Label(sashForm_2, SWT.NONE);
 		lblNewLabel.setText("W\u00E4hle ein Upgrade!");
 
-		capitalLabel = new Label(sashForm_2, SWT.NONE);
-		capitalLabel.setAlignment(SWT.RIGHT);
+		sashForm_6 = new SashForm(sashForm_2, SWT.NONE);
+
+		outputLabel = new Label(sashForm_6, SWT.NONE);
+		outputLabel.setText("Aktuelle Produktivit\u00E4t");
+
+		capitalLabel = new Label(sashForm_6, SWT.NONE);
 		capitalLabel.setText("Aktuelles Kapital: 1002\u20AC");
-		sashForm_2.setWeights(new int[] { 1, 1 });
+		sashForm_6.setWeights(new int[] { 1, 1 });
+		sashForm_2.setWeights(new int[] { 2, 3 });
 
 		Group grpUpgrades = new Group(sashForm, SWT.NONE);
 		grpUpgrades.setText("Upgrades");
@@ -160,6 +166,9 @@ public class upgradeProduction extends Dialog {
 		capitalLabel.setText("Aktuelles Kapital: " + roundmanager.getCapital()
 				+ "€");
 
+		// set output
+		outputLabel.setText("Aktuelle Produktivität: " + roundmanager.getOutput());
+		
 		// set small update text
 		upgrade_small
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "

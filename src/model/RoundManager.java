@@ -136,7 +136,7 @@ public class RoundManager {
 		}
 	}
 
-	public boolean checkEventPosibility() // Überprüft ob event auch erfüllbar
+	public boolean checkEventPossibility() // Überprüft ob event auch erfüllbar
 											// ist
 	{
 		if (eventAmount <= brewery.getStorage()) {
@@ -198,5 +198,9 @@ public class RoundManager {
 
 	public int getStorage() {
 		return brewery.getStorage();
+	}
+	
+	public int getOutput() {
+		return brewery.getOutput();
 	}
 }

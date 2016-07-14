@@ -9,6 +9,8 @@ import org.eclipse.swt.widgets.Event;
 
 import model.*;
 
+import org.eclipse.wb.swt.SWTResourceManager;
+
 public class MainWindow {
 
 	protected Shell shell;
@@ -28,10 +30,16 @@ public class MainWindow {
 	private Label kosten;
 	private Label capacity;
 	private Label storage;
-
 	private Spinner amount_spinner;
-
 	private Scale amount_scale;
+	private Label output;
+	private Group TopRight;
+	private Label eventName;
+	private Text eventDescription;
+	private Label eventPrice;
+	private Label eventAmount;
+	private Label eventRoundsLeft;
+	private Button doEvent;
 
 	// constructor
 	public MainWindow(RoundManager roundmanager) {
@@ -56,8 +64,8 @@ public class MainWindow {
 
 	protected void createContents() {
 		mainShell = new Shell();
-		mainShell.setMinimumSize(new Point(600, 400));
-		mainShell.setSize(509, 401);
+		mainShell.setMinimumSize(new Point(529, 363));
+		mainShell.setSize(503, 322);
 		mainShell.setText("Bier-Simulator");
 		mainShell.setLayout(new FillLayout(SWT.HORIZONTAL));
 
@@ -73,8 +81,7 @@ public class MainWindow {
 		Button buttonNextRound = new Button(Head, SWT.CENTER);
 		buttonNextRound.setText("Zum n\u00E4chster Tag");
 
-		Composite Top = new Composite(sashForm, SWT.NONE);
-		Top.setLayout(new FillLayout(SWT.HORIZONTAL));
+		SashForm Top = new SashForm(sashForm, SWT.NONE);
 
 		Group TopLeft = new Group(Top, SWT.NONE);
 		TopLeft.setText("Markt");
@@ -88,8 +95,8 @@ public class MainWindow {
 		SashForm price = new SashForm(sashForm_2, SWT.NONE);
 
 		final Scale price_scale = new Scale(price, SWT.NONE);
-		price_scale.setPageIncrement(100);
-		price_scale.setIncrement(50);
+		price_scale.setPageIncrement(50);
+		price_scale.setIncrement(100);
 		price_scale.setMaximum(5000);
 
 		final Spinner price_spinner = new Spinner(price, SWT.BORDER);
@@ -150,42 +157,59 @@ public class MainWindow {
 		});
 
 		amount.setWeights(new int[] { 4, 1 });
-		sashForm_2.setWeights(new int[] { 1, 2, 1, 2 });
 
-		Group TopRight = new Group(Top, SWT.NONE);
-		TopRight.setText("B\u00FCro");
-		TopRight.setLayout(new FillLayout(SWT.HORIZONTAL));
+		Group büroGroup = new Group(sashForm_2, SWT.NONE);
+		büroGroup.setText("B\u00FCro");
+		büroGroup.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		SashForm sashForm_1 = new SashForm(TopRight, SWT.VERTICAL);
-
-		konto = new Label(sashForm_1, SWT.NONE);
+		konto = new Label(büroGroup, SWT.NONE);
 		konto.setText("Konto: xyz");
 
-		kosten = new Label(sashForm_1, SWT.NONE);
+		kosten = new Label(büroGroup, SWT.NONE);
 		kosten.setText("Kosten: xyz");
+		sashForm_2.setWeights(new int[] { 1, 2, 1, 2, 2 });
 
-		Group grpAuftrage = new Group(sashForm_1, SWT.NONE);
-		grpAuftrage.setText("Events");
-		grpAuftrage.setLayout(new FillLayout(SWT.VERTICAL));
+		TopRight = new Group(Top, SWT.NONE);
+		TopRight.setText("Events");
+		TopRight.setLayout(new FillLayout(SWT.VERTICAL));
 
-		Label eventName = new Label(grpAuftrage, SWT.NONE);
+		SashForm eventGroup = new SashForm(TopRight, SWT.VERTICAL);
+
+		eventName = new Label(eventGroup, SWT.NONE);
+		eventName
+				.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.NORMAL));
 		eventName.setText("Name: xyz");
 
-		Label eventDescription = new Label(grpAuftrage, SWT.NONE);
-		eventDescription.setText("Beschreibung: ");
+		eventDescription = new Text(eventGroup, SWT.BORDER | SWT.READ_ONLY
+				| SWT.WRAP | SWT.V_SCROLL);
+		eventDescription.setEditable(false);
+		eventDescription
+				.setText("eventDes dafdlfkj fajdlfj  lkfaj dj\u00F6 lkjaf ljl\u00F6kf asd adfa dsf lkj adf af");
 
-		Label eventPrice = new Label(grpAuftrage, SWT.NONE);
+		eventPrice = new Label(eventGroup, SWT.NONE);
 		eventPrice.setText("Preis: xyz");
 
-		Label eventAmount = new Label(grpAuftrage, SWT.NONE);
+		eventAmount = new Label(eventGroup, SWT.NONE);
 		eventAmount.setText("Ben\u00F6tigte Menge: xyz");
 
-		Label eventRoundsLeft = new Label(grpAuftrage, SWT.NONE);
+		eventRoundsLeft = new Label(eventGroup, SWT.NONE);
 		eventRoundsLeft.setText("Noch \u00FCbrige Runden: xyz");
 
-		Button doEvent = new Button(grpAuftrage, SWT.NONE);
-		doEvent.setText("Auftrag erf\u00FCllen");
-		sashForm_1.setWeights(new int[] { 1, 1, 5 });
+		doEvent = new Button(eventGroup, SWT.NONE);
+		doEvent.setText("Auftrag liefern");
+
+		doEvent.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					roundmanager.executeEvent();
+					fetchUIData();
+					break;
+				}
+			}
+		});
+		eventGroup.setWeights(new int[] { 1, 3, 1, 1, 1, 2 });
+		Top.setWeights(new int[] { 4, 4 });
 
 		Composite Bottom = new Composite(sashForm, SWT.NONE);
 		Bottom.setLayout(new FillLayout(SWT.HORIZONTAL));
@@ -193,6 +217,9 @@ public class MainWindow {
 		Group BottomLeft = new Group(Bottom, SWT.NONE);
 		BottomLeft.setText("Brauerei");
 		BottomLeft.setLayout(new FillLayout(SWT.VERTICAL));
+
+		output = new Label(BottomLeft, SWT.NONE);
+		output.setText("Produktionsmenge: 0");
 
 		capacity = new Label(BottomLeft, SWT.NONE);
 		capacity.setText("Kapazit\u00E4t");
@@ -224,11 +251,11 @@ public class MainWindow {
 		});
 		LagerButton.setText("Lager");
 
-		Button ProdukteButton = new Button(BottomRight, SWT.NONE);
-		ProdukteButton.setText("Produkte");
-		sashForm.setWeights(new int[] { 2, 5, 5 });
+		Button ProduktionButton = new Button(BottomRight, SWT.NONE);
+		ProduktionButton.setText("Produktion");
+		sashForm.setWeights(new int[] { 2, 6, 3 });
 
-		ProdukteButton.addListener(SWT.Selection, new Listener() {
+		ProduktionButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
@@ -250,7 +277,8 @@ public class MainWindow {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					System.out.println("UI - MainWindow: NextRoundButton pressed");
+					System.out
+							.println("UI - MainWindow: NextRoundButton pressed");
 					roundmanager.placeSellOrder(amount_scale.getSelection(),
 							price_scale.getSelection());
 					roundmanager.nextRound();
@@ -275,6 +303,7 @@ public class MainWindow {
 		capacity.setText("Lager-Kapazität: "
 				+ roundmanager.getStorageMaxSpace());
 		storage.setText("Lagernutzung: " + roundmanager.getStorage());
+		output.setText("Produktionsmenge: " + roundmanager.getOutput());
 
 		// set amount scale bounds
 		if (roundmanager.getStorage() > 0) {
@@ -286,6 +315,34 @@ public class MainWindow {
 		} else {
 			amount_scale.setEnabled(false);
 			amount_spinner.setEnabled(false);
+		}
+
+		// update UI window
+		if (roundmanager.checkEventAvailability()) {
+			// event is active
+			TopRight.setEnabled(true);
+			eventDescription.setEnabled(true);
+			eventName.setText(roundmanager.getEventName());
+			eventDescription.setText(roundmanager.getEventDescription());
+			eventPrice.setText("Bierpreis: " + roundmanager.getEventPrice());
+			eventAmount.setText("Erwartete Biermenge: "
+					+ roundmanager.getEventAmount());
+			eventRoundsLeft.setText("Noch " + roundmanager.getEventDurability()
+					+ " Runden übrig");
+
+			// check if event can be completed
+			doEvent.setEnabled(roundmanager.checkEventPossibility());
+
+		} else {
+			// no event active
+			TopRight.setEnabled(false);
+			eventDescription.setEnabled(false);
+			eventName.setText("Kein Event aktiv");
+			eventDescription.setText("");
+			eventPrice.setText("");
+			eventAmount.setText("");
+			eventRoundsLeft.setText("");
+			doEvent.setEnabled(false);
 		}
 	}
 }

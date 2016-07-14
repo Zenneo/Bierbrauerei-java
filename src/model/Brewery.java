@@ -54,7 +54,7 @@ public class Brewery {
 		if (extraCapacity > 0 ) {
 			storageMaxSpace += extraCapacity;
 		} else {
-			throw new IllegalArgumentException("extraCapacity lower than 0");
+			throw new IllegalArgumentException("extraCapacity smaller than 1");
 		}
 		
 	}
@@ -63,7 +63,7 @@ public class Brewery {
 		if (extraOutput > 0 ) {
 			output += extraOutput;
 		} else {
-			throw new IllegalArgumentException("extraOutput lower than 0");
+			throw new IllegalArgumentException("extraOutput smaller than 1");
 		}
 	}
 
@@ -71,7 +71,7 @@ public class Brewery {
 		if (extraRoundlyCosts > 0 ) {
 			roundlyCosts += extraRoundlyCosts;
 		} else {
-			throw new IllegalArgumentException("extraRoundlyCosts lower than 0");
+			throw new IllegalArgumentException("extraRoundlyCosts smaller than 1");
 		}
 	}
 }
