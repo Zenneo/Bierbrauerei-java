@@ -169,21 +169,25 @@ public class upgradeStorage extends Dialog {
 				+ "€");
 
 		// set max storage capacity
-		maxCapacityLabel.setText("Aktuelle Lager-Kapazität: " + roundmanager.getStorageMaxSpace());
-		
+		maxCapacityLabel.setText("Aktuelle Lager-Kapazität: "
+				+ roundmanager.getStorageMaxSpace());
+
 		// set small update text
-		upgrade_small.setToolTipText("Verbesserung: "
-				+ roundmanager.getUpgradeOutputEffect(0));
+		upgrade_small
+				.setToolTipText("Verbessert die Lagerkapazität um "
+						+ roundmanager.getUpgradeOutputEffect(0));
 		cost_small.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(0));
 
 		// set medium update text
-		upgrade_medium.setToolTipText("Verbesserung: "
-				+ roundmanager.getUpgradeOutputEffect(1));
+		upgrade_medium
+				.setToolTipText("Verbessert die Lagerkapazität um "
+						+ roundmanager.getUpgradeOutputEffect(1));
 		cost_medium.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(1));
 
 		// set big update text
-		upgrade_big.setToolTipText("Verbesserung: "
-				+ roundmanager.getUpgradeOutputEffect(2));
+		upgrade_big
+				.setToolTipText("Verbessert die Lagerkapazität um "
+						+ roundmanager.getUpgradeOutputEffect(2));
 		cost_big.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(2));
 
 	}

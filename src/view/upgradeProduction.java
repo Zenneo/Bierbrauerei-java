@@ -172,20 +172,20 @@ public class upgradeProduction extends Dialog {
 		// set small update text
 		upgrade_small
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeStoragePrice(0));
+						+ roundmanager.getUpgradeStorageEffect(0));
 		cost_small.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(0));
 
 		// set medium update text
 		upgrade_medium
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeStoragePrice(1));
+						+ roundmanager.getUpgradeStorageEffect(1));
 		cost_medium
 				.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(1));
 
 		// set big update text
 		upgrade_big
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeStoragePrice(2));
+						+ roundmanager.getUpgradeStorageEffect(2));
 		cost_big.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(2));
 	}
 
