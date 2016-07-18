@@ -93,13 +93,12 @@ public class MainWindow {
 		SashForm price = new SashForm(sashForm_2, SWT.NONE);
 
 		final Scale price_scale = new Scale(price, SWT.NONE);
-		price_scale.setPageIncrement(50);
-		price_scale.setIncrement(100);
-		price_scale.setMaximum(5000);
+		price_scale.setIncrement(5);
+		price_scale.setMaximum(50);
 
 		final Spinner price_spinner = new Spinner(price, SWT.BORDER);
-		price_spinner.setIncrement(10);
-		price_spinner.setMaximum(5000);
+		price_spinner.setIncrement(5);
+		price_spinner.setMaximum(50);
 		price.setWeights(new int[] { 4, 1 });
 
 		// synchronise price spinnner and scale
