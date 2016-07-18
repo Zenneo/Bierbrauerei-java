@@ -68,7 +68,7 @@ public class Brewery {
 	}
 
 	public void upgradeRoundlyCosts(int extraRoundlyCosts) {
-		if (extraRoundlyCosts > 0 ) {
+		if (extraRoundlyCosts >= 0 ) {
 			roundlyCosts += extraRoundlyCosts;
 		} else {
 			throw new IllegalArgumentException("extraRoundlyCosts smaller than 1");
