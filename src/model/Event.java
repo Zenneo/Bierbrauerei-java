@@ -27,12 +27,9 @@ public class Event {
 
 			// sql query
 			ResultSet count = stmtCount.executeQuery("SELECT count(id) FROM event WHERE minRound < " + round + " AND maxRound > " + round + ";");
-			ResultSet rs = stmt.executeQuery("SELECT * FROM event WHERE minRound < " + round + " AND maxRound > " + round + ";");
 			int rowcount = count.getInt("count(id)");
-			System.out.println("rowcount: " + rowcount);
+			ResultSet rs = stmt.executeQuery("SELECT * FROM event WHERE minRound < " + round + " AND maxRound > " + round + ";");
 			int random = (int) (Math.random() * rowcount);
-			System.out.println("Round: " + round);
-			System.out.println("Random: " + random);
 			while (rs.next()) {
 				if (random == 0) {
 					eventAmount = rs.getInt("amountFactor") * round
@@ -41,9 +38,8 @@ public class Event {
 					eventDurability = rs.getInt("durability");
 					eventName = rs.getString("name");
 					eventDescription = rs.getString("description");
-				} else {
-					random--;
 				}
+				random--;
 			}
 			rs.close();
 			count.close();
