@@ -29,10 +29,11 @@ public class Brewery {
 	}
 
 	// Constructor
-	public Brewery(int capacity_ini, int output_init) {
+	public Brewery(int capacity_ini, int output_init, int roundly_init) {
 		storageMaxSpace = capacity_ini;
 		this.output = output_init;
 		storage = 0;
+		roundlyCosts = roundly_init;
 	}
 
 	public void produce() {

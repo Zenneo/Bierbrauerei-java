@@ -23,7 +23,7 @@ public class RoundManager {
 
 	public RoundManager() {
 		bank = new Bank(10000);
-		brewery = new Brewery(400, 50);
+		brewery = new Brewery(400, 50, 700);
 		upgrademanager = new Upgrademanager(bank, brewery);
 		event = new Event();
 		sellOrderPrice = 0;
