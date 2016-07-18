@@ -88,7 +88,7 @@ public class MainWindow {
 		SashForm sashForm_2 = new SashForm(TopLeft, SWT.VERTICAL);
 
 		Label beerPrice = new Label(sashForm_2, SWT.NONE);
-		beerPrice.setText("Lohn");
+		beerPrice.setText("Preis pro Bier");
 
 		SashForm price = new SashForm(sashForm_2, SWT.NONE);
 
