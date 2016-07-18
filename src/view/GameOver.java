@@ -67,10 +67,11 @@ public class GameOver extends Dialog {
 		
 		SashForm sashForm_4 = new SashForm(sashForm, SWT.NONE);
 		
-		Label lblNewLabel = new Label(sashForm_4, SWT.NONE);
-		lblNewLabel.setFont(SWTResourceManager.getFont("Rockwell", 23, SWT.NORMAL));
-		lblNewLabel.setAlignment(SWT.CENTER);
-		lblNewLabel.setText("Du bist pleite !!!");
+		Label endText = new Label(sashForm_4, SWT.NONE);
+		endText.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		endText.setFont(SWTResourceManager.getFont("Rockwell", 23, SWT.NORMAL));
+		endText.setAlignment(SWT.CENTER);
+		endText.setText("Du bist pleite !!!");
 		sashForm_4.setWeights(new int[] {1});
 		sashForm.setWeights(new int[] {1, 1});
 		
@@ -81,8 +82,8 @@ public class GameOver extends Dialog {
 		
 		SashForm sashForm_6 = new SashForm(sashForm_1, SWT.NONE);
 		
-		Button btnNewButton_1 = new Button(sashForm_6, SWT.NONE);
-		btnNewButton_1.setText("Spiel beenden");
+		Button finishGame = new Button(sashForm_6, SWT.NONE);
+		finishGame.setText("Spiel beenden");
 		sashForm_6.setWeights(new int[] {1});
 		
 		SashForm sashForm_7 = new SashForm(sashForm_1, SWT.NONE);
