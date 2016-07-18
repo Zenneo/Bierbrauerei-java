@@ -203,4 +203,10 @@ public class RoundManager {
 	public int getOutput() {
 		return brewery.getOutput();
 	}
+	public Upgrade[] getUpgradesStorage() {
+		return upgrademanager.getUpgradesStorage();
+	}
+	public Upgrade[] getUpgradesOutput() {
+		return upgrademanager.getUpgradesOutput();
+	}
 }
