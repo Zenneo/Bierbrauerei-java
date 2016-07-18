@@ -43,8 +43,14 @@ public class RoundManager {
 		sell();
 		System.out.println("vor Event");
 		eventDurability--;
-		if (eventName == "" || eventDurability < 1) {
-			getNewEvent();
+		if (eventDurability < 1) {
+			getEmptyEvent();
+		}
+		if (eventName == "") {
+			int random = (int) (Math.random() * 10);
+			if  (random < 2) {
+				getNewEvent();
+			}
 		}
 		// increment round counter
 		round++;
@@ -117,6 +123,14 @@ public class RoundManager {
 		return factor / 100;
 	}
 
+	private void getEmptyEvent() {
+		eventName = "";
+		eventDescription = "Gerade gibt es kein Event, warte noch ein paar Tage, dann kommt wieder ein Event.";
+		eventPrice = 0;
+		eventAmount = 0;
+		eventDurability = 0;
+	}
+
 	public void getNewEvent() {
 		ReturnEvent newEvent = event.getEvent(round);
 		eventName = newEvent.geteventName();
@@ -124,7 +138,6 @@ public class RoundManager {
 		eventPrice = newEvent.geteventPrice();
 		eventAmount = newEvent.geteventAmount();
 		eventDurability = newEvent.geteventDurability();
-		System.out.println("Eventüberprüferr: " + eventName + eventDescription + eventPrice + eventAmount + eventDurability);
 	}
 
 	public boolean checkEventAvailability() // Überprüft ob Event da ist
