@@ -167,26 +167,32 @@ public class upgradeProduction extends Dialog {
 				+ "€");
 
 		// set output
-		outputLabel.setText("Aktuelle Produktivität: " + roundmanager.getOutput());
-		
+		outputLabel.setText("Aktuelle Produktivität: "
+				+ roundmanager.getOutput());
+
 		// set small update text
+		upgrade_small.setText(roundmanager.getUpgradesOutput()[0]
+				.getDescriptions());
 		upgrade_small
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeStorageEffect(0));
-		cost_small.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(0));
+						+ roundmanager.getUpgradeOutputEffect(0));
+		cost_small.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(0));
 
 		// set medium update text
+		upgrade_medium.setText(roundmanager.getUpgradesOutput()[1]
+				.getDescriptions());
 		upgrade_medium
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeStorageEffect(1));
-		cost_medium
-				.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(1));
+						+ roundmanager.getUpgradeOutputEffect(1));
+		cost_medium.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(1));
 
 		// set big update text
+		upgrade_big.setText(roundmanager.getUpgradesOutput()[2]
+				.getDescriptions());
 		upgrade_big
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeStorageEffect(2));
-		cost_big.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(2));
+						+ roundmanager.getUpgradeOutputEffect(2));
+		cost_big.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(2));
 	}
 
 }

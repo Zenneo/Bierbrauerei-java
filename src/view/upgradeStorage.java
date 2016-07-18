@@ -173,22 +173,28 @@ public class upgradeStorage extends Dialog {
 				+ roundmanager.getStorageMaxSpace());
 
 		// set small update text
-		upgrade_small
-				.setToolTipText("Verbessert die Lagerkapazität um "
-						+ roundmanager.getUpgradeOutputEffect(0));
-		cost_small.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(0));
+		upgrade_small.setText(roundmanager.getUpgradesStorage()[0]
+				.getDescriptions());
+		upgrade_small.setToolTipText("Verbessert die Lagerkapazität um "
+				+ roundmanager.getUpgradeStorageEffect(0));
+		cost_small.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(0)
+				+ "€");
 
 		// set medium update text
-		upgrade_medium
-				.setToolTipText("Verbessert die Lagerkapazität um "
-						+ roundmanager.getUpgradeOutputEffect(1));
-		cost_medium.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(1));
+		upgrade_medium.setText(roundmanager.getUpgradesStorage()[1]
+				.getDescriptions());
+		upgrade_medium.setToolTipText("Verbessert die Lagerkapazität um "
+				+ roundmanager.getUpgradeStorageEffect(1));
+		cost_medium.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(1)
+				+ "€");
 
 		// set big update text
-		upgrade_big
-				.setToolTipText("Verbessert die Lagerkapazität um "
-						+ roundmanager.getUpgradeOutputEffect(2));
-		cost_big.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(2));
+		upgrade_big.setText(roundmanager.getUpgradesStorage()[2]
+				.getDescriptions());
+		upgrade_big.setToolTipText("Verbessert die Lagerkapazität um "
+				+ roundmanager.getUpgradeStorageEffect(2));
+		cost_big.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(2)
+				+ "€");
 
 	}
 
