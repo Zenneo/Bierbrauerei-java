@@ -9,8 +9,6 @@ import org.eclipse.swt.widgets.Event;
 
 import model.*;
 
-import org.eclipse.wb.swt.SWTResourceManager;
-
 public class MainWindow {
 
 	protected Shell shell;
@@ -176,8 +174,6 @@ public class MainWindow {
 		SashForm eventGroup = new SashForm(TopRight, SWT.VERTICAL);
 
 		eventName = new Label(eventGroup, SWT.NONE);
-		eventName
-				.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.NORMAL));
 		eventName.setText("Name: xyz");
 
 		eventDescription = new Text(eventGroup, SWT.BORDER | SWT.READ_ONLY
