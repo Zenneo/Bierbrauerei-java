@@ -88,6 +88,7 @@ public class RoundManager {
 	{
 		bank.payIn(eventPrice);
 		brewery.removeBeer(eventAmount);
+		getEmptyEvent();
 	}
 
 	private void sell() {
