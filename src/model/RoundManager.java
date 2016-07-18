@@ -38,9 +38,9 @@ public class RoundManager {
 	// does every operation and finishes a round if everything is valid
 	public void nextRound() {
 		System.out.println("nextRound");
+		sell();
 		brewery.produce();
 		bank.payOut(brewery.getRoundlyCosts());
-		sell();
 		System.out.println("vor Event");
 		eventDurability--;
 		if (eventDurability < 1) {
