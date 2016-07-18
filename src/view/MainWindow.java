@@ -88,7 +88,7 @@ public class MainWindow {
 		SashForm sashForm_2 = new SashForm(TopLeft, SWT.VERTICAL);
 
 		Label beerPrice = new Label(sashForm_2, SWT.NONE);
-		beerPrice.setText("Bierpreis");
+		beerPrice.setText("Lohn");
 
 		SashForm price = new SashForm(sashForm_2, SWT.NONE);
 
@@ -319,7 +319,7 @@ public class MainWindow {
 			eventDescription.setEnabled(true);
 			eventName.setText(roundmanager.getEventName());
 			eventDescription.setText(roundmanager.getEventDescription());
-			eventPrice.setText("Bierpreis: " + roundmanager.getEventPrice());
+			eventPrice.setText("Belohnung: " + roundmanager.getEventPrice() + "€");
 			eventAmount.setText("Erwartete Biermenge: "
 					+ roundmanager.getEventAmount());
 			eventRoundsLeft.setText("Noch " + roundmanager.getEventDurability()

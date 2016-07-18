@@ -30,6 +30,9 @@ public class upgradeProduction extends Dialog {
 	private Label cost_big;
 	private SashForm sashForm_6;
 	private Label outputLabel;
+	private SashForm smallUpgradeGroup;
+	private SashForm mediumUpgradeGroup;
+	private SashForm largeUpgradeGroup;
 
 	/**
 	 * Create the dialog.
@@ -94,35 +97,35 @@ public class upgradeProduction extends Dialog {
 
 		SashForm sashForm_1 = new SashForm(grpUpgrades, SWT.NONE);
 
-		SashForm sashForm_3 = new SashForm(sashForm_1, SWT.VERTICAL);
+		smallUpgradeGroup = new SashForm(sashForm_1, SWT.VERTICAL);
 
-		upgrade_small = new Button(sashForm_3, SWT.NONE);
+		upgrade_small = new Button(smallUpgradeGroup, SWT.NONE);
 		upgrade_small.setToolTipText("xyz");
 		upgrade_small.setText("Klein");
 
-		cost_small = new Label(sashForm_3, SWT.NONE);
+		cost_small = new Label(smallUpgradeGroup, SWT.NONE);
 		cost_small.setText("xyz");
-		sashForm_3.setWeights(new int[] { 5, 1 });
+		smallUpgradeGroup.setWeights(new int[] { 5, 1 });
 
-		SashForm sashForm_4 = new SashForm(sashForm_1, SWT.VERTICAL);
+		mediumUpgradeGroup = new SashForm(sashForm_1, SWT.VERTICAL);
 
-		upgrade_medium = new Button(sashForm_4, SWT.NONE);
+		upgrade_medium = new Button(mediumUpgradeGroup, SWT.NONE);
 		upgrade_medium.setToolTipText("xyz");
 		upgrade_medium.setText("Mittel");
 
-		cost_medium = new Label(sashForm_4, SWT.NONE);
+		cost_medium = new Label(mediumUpgradeGroup, SWT.NONE);
 		cost_medium.setText("xyz");
-		sashForm_4.setWeights(new int[] { 5, 1 });
+		mediumUpgradeGroup.setWeights(new int[] { 5, 1 });
 
-		SashForm sashForm_5 = new SashForm(sashForm_1, SWT.VERTICAL);
+		largeUpgradeGroup = new SashForm(sashForm_1, SWT.VERTICAL);
 
-		upgrade_big = new Button(sashForm_5, SWT.NONE);
+		upgrade_big = new Button(largeUpgradeGroup, SWT.NONE);
 		upgrade_big.setToolTipText("xyz");
 		upgrade_big.setText("Gro\u00DF");
 
-		cost_big = new Label(sashForm_5, SWT.NONE);
+		cost_big = new Label(largeUpgradeGroup, SWT.NONE);
 		cost_big.setText("xyz");
-		sashForm_5.setWeights(new int[] { 5, 1 });
+		largeUpgradeGroup.setWeights(new int[] { 5, 1 });
 		sashForm_1.setWeights(new int[] { 1, 1, 1 });
 		sashForm.setWeights(new int[] { 2, 5 });
 
@@ -162,15 +165,23 @@ public class upgradeProduction extends Dialog {
 	}
 
 	private void fetchUIData() {
-		// set capital
+		// set capital label
 		capitalLabel.setText("Aktuelles Kapital: " + roundmanager.getCapital()
 				+ "€");
 
-		// set output
+		// set output label
 		outputLabel.setText("Aktuelle Produktivität: "
 				+ roundmanager.getOutput());
 
-		// set small update text
+		// set small update button and labels
+		if (roundmanager.getUpgradesOutput()[0].isPossible()) {
+			smallUpgradeGroup.setEnabled(true);
+			upgrade_small.setEnabled(true);
+
+		} else {
+			smallUpgradeGroup.setEnabled(false);
+			upgrade_small.setEnabled(false);
+		}
 		upgrade_small.setText(roundmanager.getUpgradesOutput()[0]
 				.getDescriptions());
 		upgrade_small
@@ -178,7 +189,14 @@ public class upgradeProduction extends Dialog {
 						+ roundmanager.getUpgradeOutputEffect(0));
 		cost_small.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(0));
 
-		// set medium update text
+		// set medium update button and labels
+		if (roundmanager.getUpgradesOutput()[1].isPossible()) {
+			mediumUpgradeGroup.setEnabled(true);
+			upgrade_medium.setEnabled(true);
+		} else {
+			mediumUpgradeGroup.setEnabled(false);
+			upgrade_medium.setEnabled(false);
+		}
 		upgrade_medium.setText(roundmanager.getUpgradesOutput()[1]
 				.getDescriptions());
 		upgrade_medium
@@ -186,13 +204,22 @@ public class upgradeProduction extends Dialog {
 						+ roundmanager.getUpgradeOutputEffect(1));
 		cost_medium.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(1));
 
-		// set big update text
+		// set big update button and labels
+		if (roundmanager.getUpgradesOutput()[2].isPossible()) {
+			largeUpgradeGroup.setEnabled(true);
+			upgrade_big.setEnabled(true);
+
+		} else {
+			largeUpgradeGroup.setEnabled(false);
+			upgrade_big.setEnabled(false);
+		}
 		upgrade_big.setText(roundmanager.getUpgradesOutput()[2]
 				.getDescriptions());
 		upgrade_big
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
 						+ roundmanager.getUpgradeOutputEffect(2));
 		cost_big.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(2));
+
 	}
 
 }

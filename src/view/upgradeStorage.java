@@ -24,6 +24,9 @@ public class upgradeStorage extends Dialog {
 	private Button upgrade_medium;
 	private Button upgrade_big;
 	private Label maxCapacityLabel;
+	private SashForm smallUpgradeGroup;
+	private SashForm mediumUpgradeGroup;
+	private SashForm largeUpgradeGroup;
 
 	/**
 	 * Create the dialog.
@@ -96,35 +99,35 @@ public class upgradeStorage extends Dialog {
 
 		SashForm sashForm_1 = new SashForm(grpUpgrades, SWT.NONE);
 
-		SashForm sashForm_3 = new SashForm(sashForm_1, SWT.VERTICAL);
+		smallUpgradeGroup = new SashForm(sashForm_1, SWT.VERTICAL);
 
-		upgrade_small = new Button(sashForm_3, SWT.NONE);
+		upgrade_small = new Button(smallUpgradeGroup, SWT.NONE);
 		upgrade_small.setToolTipText("Tooltip kleines Upgrade");
 		upgrade_small.setText("Klein");
 
-		cost_small = new Label(sashForm_3, SWT.NONE);
+		cost_small = new Label(smallUpgradeGroup, SWT.NONE);
 		cost_small.setText("xyz");
-		sashForm_3.setWeights(new int[] { 5, 1 });
+		smallUpgradeGroup.setWeights(new int[] { 5, 1 });
 
-		SashForm sashForm_4 = new SashForm(sashForm_1, SWT.VERTICAL);
+		mediumUpgradeGroup = new SashForm(sashForm_1, SWT.VERTICAL);
 
-		upgrade_medium = new Button(sashForm_4, SWT.NONE);
+		upgrade_medium = new Button(mediumUpgradeGroup, SWT.NONE);
 		upgrade_medium.setToolTipText("Tooltip mittleres Upgrade");
 		upgrade_medium.setText("Mittel");
 
-		cost_medium = new Label(sashForm_4, SWT.NONE);
+		cost_medium = new Label(mediumUpgradeGroup, SWT.NONE);
 		cost_medium.setText("xyz");
-		sashForm_4.setWeights(new int[] { 5, 1 });
+		mediumUpgradeGroup.setWeights(new int[] { 5, 1 });
 
-		SashForm sashForm_5 = new SashForm(sashForm_1, SWT.VERTICAL);
+		largeUpgradeGroup = new SashForm(sashForm_1, SWT.VERTICAL);
 
-		upgrade_big = new Button(sashForm_5, SWT.NONE);
+		upgrade_big = new Button(largeUpgradeGroup, SWT.NONE);
 		upgrade_big.setToolTipText("Tooltip groﬂes Upgrade");
 		upgrade_big.setText("Gro\u00DF");
 
-		cost_big = new Label(sashForm_5, SWT.NONE);
+		cost_big = new Label(largeUpgradeGroup, SWT.NONE);
 		cost_big.setText("xyz");
-		sashForm_5.setWeights(new int[] { 5, 1 });
+		largeUpgradeGroup.setWeights(new int[] { 5, 1 });
 		sashForm_1.setWeights(new int[] { 1, 1, 1 });
 		sashForm.setWeights(new int[] { 2, 5 });
 
@@ -173,6 +176,14 @@ public class upgradeStorage extends Dialog {
 				+ roundmanager.getStorageMaxSpace());
 
 		// set small update text
+		if (roundmanager.getUpgradesStorage()[0].isPossible()) {
+			smallUpgradeGroup.setEnabled(true);
+			upgrade_small.setEnabled(true);
+
+		} else {
+			smallUpgradeGroup.setEnabled(false);
+			upgrade_small.setEnabled(false);
+		}
 		upgrade_small.setText(roundmanager.getUpgradesStorage()[0]
 				.getDescriptions());
 		upgrade_small.setToolTipText("Verbessert die Lagerkapazit‰t um "
@@ -181,6 +192,14 @@ public class upgradeStorage extends Dialog {
 				+ "Ä");
 
 		// set medium update text
+		if (roundmanager.getUpgradesStorage()[1].isPossible()) {
+			mediumUpgradeGroup.setEnabled(true);
+			upgrade_medium.setEnabled(true);
+
+		} else {
+			mediumUpgradeGroup.setEnabled(false);
+			upgrade_medium.setEnabled(false);
+		}
 		upgrade_medium.setText(roundmanager.getUpgradesStorage()[1]
 				.getDescriptions());
 		upgrade_medium.setToolTipText("Verbessert die Lagerkapazit‰t um "
@@ -189,6 +208,14 @@ public class upgradeStorage extends Dialog {
 				+ "Ä");
 
 		// set big update text
+		if (roundmanager.getUpgradesStorage()[2].isPossible()) {
+			largeUpgradeGroup.setEnabled(true);
+			upgrade_big.setEnabled(true);
+
+		} else {
+			largeUpgradeGroup.setEnabled(false);
+			upgrade_big.setEnabled(false);
+		}
 		upgrade_big.setText(roundmanager.getUpgradesStorage()[2]
 				.getDescriptions());
 		upgrade_big.setToolTipText("Verbessert die Lagerkapazit‰t um "
