@@ -186,7 +186,7 @@ public class upgradeProduction extends Dialog {
 				.getDescriptions());
 		upgrade_small
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeOutputEffect(0));
+						+ roundmanager.getUpgradeOutputEffect(0) + ". Pro Tag werden " + roundmanager.getUpgradesOutput()[0].getRoundlyCosts() + "€ extra gezahlt");
 		cost_small.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(0));
 
 		// set medium update button and labels
@@ -201,7 +201,7 @@ public class upgradeProduction extends Dialog {
 				.getDescriptions());
 		upgrade_medium
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeOutputEffect(1));
+						+ roundmanager.getUpgradeOutputEffect(1)  + ". Pro Tag werden " + roundmanager.getUpgradesOutput()[1].getRoundlyCosts() + "€ extra gezahlt");
 		cost_medium.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(1));
 
 		// set big update button and labels
@@ -217,7 +217,7 @@ public class upgradeProduction extends Dialog {
 				.getDescriptions());
 		upgrade_big
 				.setToolTipText("Verbessert die aktuelle Produktionsmenge um "
-						+ roundmanager.getUpgradeOutputEffect(2));
+						+ roundmanager.getUpgradeOutputEffect(2)  + ". Pro Tag werden " + roundmanager.getUpgradesOutput()[2].getRoundlyCosts() + "€ extra gezahlt");
 		cost_big.setText("Kosten: " + roundmanager.getUpgradeOutputPrice(2));
 
 	}
