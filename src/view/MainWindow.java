@@ -39,6 +39,12 @@ public class MainWindow {
 	private Label eventRoundsLeft;
 	private Button doEvent;
 
+	private Label summe;
+
+	private Scale price_scale;
+
+	private Spinner price_spinner;
+
 	// constructor
 	public MainWindow(RoundManager roundmanager) {
 		this.roundmanager = roundmanager;
@@ -93,19 +99,19 @@ public class MainWindow {
 				Label beerPrice = new Label(composite, SWT.NONE);
 				beerPrice.setText("Preis pro Bier");
 				
-				Label summe = new Label(composite, SWT.NONE);
+				summe = new Label(composite, SWT.NONE);
 				summe.setAlignment(SWT.RIGHT);
-				summe.setText("Summe: ");
+				summe.setText("Summe: 0€");
 
 		SashForm price = new SashForm(sashForm_2, SWT.NONE);
 
-		final Scale price_scale = new Scale(price, SWT.NONE);
+		price_scale = new Scale(price, SWT.NONE);
 		price_scale.setIncrement(5);
-		price_scale.setMaximum(50);
+		price_scale.setMaximum(70);
 
-		final Spinner price_spinner = new Spinner(price, SWT.BORDER);
+		price_spinner = new Spinner(price, SWT.BORDER);
 		price_spinner.setIncrement(5);
-		price_spinner.setMaximum(50);
+		price_spinner.setMaximum(70);
 		price.setWeights(new int[] { 4, 1 });
 
 		// synchronise price spinnner and scale
@@ -114,6 +120,7 @@ public class MainWindow {
 				switch (e.type) {
 				case SWT.Selection:
 					price_spinner.setSelection(price_scale.getSelection());
+					updateSumLabel(true);
 					break;
 				}
 			}
@@ -123,6 +130,7 @@ public class MainWindow {
 				switch (e.type) {
 				case SWT.Selection:
 					price_scale.setSelection(price_spinner.getSelection());
+					updateSumLabel(true);
 					break;
 				}
 			}
@@ -146,6 +154,7 @@ public class MainWindow {
 				switch (e.type) {
 				case SWT.Selection:
 					amount_spinner.setSelection(amount_scale.getSelection());
+					updateSumLabel(true);
 					break;
 				}
 			}
@@ -155,6 +164,7 @@ public class MainWindow {
 				switch (e.type) {
 				case SWT.Selection:
 					amount_scale.setSelection(amount_spinner.getSelection());
+					updateSumLabel(true);
 					break;
 				}
 			}
@@ -291,6 +301,9 @@ public class MainWindow {
 						// reset amount selection
 						amount_scale.setSelection(0);
 						amount_spinner.setSelection(0);
+						
+						// update sum label
+						updateSumLabel(false);
 					}
 					catch (IllegalArgumentException ex) {
 						// open the shell and the dialog
@@ -358,6 +371,15 @@ public class MainWindow {
 			eventAmount.setText("");
 			eventRoundsLeft.setText("");
 			doEvent.setEnabled(false);
+		}
+		
+	}
+	
+	private void updateSumLabel(boolean isSum) {
+		if (isSum || (roundmanager.getSelledPrice() == 0)) {			
+			summe.setText("Summe: " + price_spinner.getSelection() * amount_spinner.getSelection() + "€");
+		} else {
+			summe.setText(roundmanager.getSelledPercentage() + "% zu: " + roundmanager.getSelledPrice() + " verkauft.");
 		}
 	}
 }
