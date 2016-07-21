@@ -86,9 +86,16 @@ public class MainWindow {
 		TopLeft.setLayout(new FillLayout(SWT.VERTICAL));
 
 		SashForm sashForm_2 = new SashForm(TopLeft, SWT.VERTICAL);
-
-		Label beerPrice = new Label(sashForm_2, SWT.NONE);
-		beerPrice.setText("Preis pro Bier");
+		
+		Composite composite = new Composite(sashForm_2, SWT.NONE);
+				composite.setLayout(new FillLayout(SWT.HORIZONTAL));
+		
+				Label beerPrice = new Label(composite, SWT.NONE);
+				beerPrice.setText("Preis pro Bier");
+				
+				Label summe = new Label(composite, SWT.NONE);
+				summe.setAlignment(SWT.RIGHT);
+				summe.setText("Summe: ");
 
 		SashForm price = new SashForm(sashForm_2, SWT.NONE);
 
@@ -272,16 +279,29 @@ public class MainWindow {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					System.out
-							.println("UI - MainWindow: NextRoundButton pressed");
-					roundmanager.placeSellOrder(amount_scale.getSelection(),
-							price_scale.getSelection());
-					roundmanager.nextRound();
-					fetchUIData();
+					try {
+						
+						System.out
+						.println("UI - MainWindow: NextRoundButton pressed");
+						roundmanager.placeSellOrder(amount_scale.getSelection(),
+								price_scale.getSelection());
+						roundmanager.nextRound();
+						fetchUIData();
+						
+						// reset amount selection
+						amount_scale.setSelection(0);
+						amount_spinner.setSelection(0);
+					}
+					catch (IllegalArgumentException ex) {
+						// open the shell and the dialog
+						Shell shell = new Shell(Display.getCurrent());
+						shell.setData("gameOver");
+						shell.setLocation(mainShell.getLocation());
 
-					// reset amount selection
-					amount_scale.setSelection(0);
-					amount_spinner.setSelection(0);
+						GameOver gameover = new GameOver(
+								shell, 0);
+						gameover.open();
+					}
 					break;
 				}
 			}
