@@ -16,6 +16,8 @@ public class RoundManager {
 	private int eventPrice;
 	private int eventAmount;
 	private int eventDurability;
+	public double selledPercentage;
+	public int selledPrice;
 
 	public int getRound() {
 		return round;
@@ -38,6 +40,7 @@ public class RoundManager {
 	// does every operation and finishes a round if everything is valid
 	public void nextRound() {
 		System.out.println("nextRound");
+		
 		sell();
 		brewery.produce();
 		bank.payOut(brewery.getRoundlyCosts());
@@ -92,7 +95,9 @@ public class RoundManager {
 	}
 
 	private void sell() {
-		bank.payIn((int)(sellOrderBier * sellOrderPrice * checkMarket()));
+		selledPercentage = checkMarket();
+		selledPrice = (int)(sellOrderBier * sellOrderPrice * selledPercentage);
+		bank.payIn(selledPrice);
 		sellOrderBier = 0;
 		sellOrderPrice = 0;
 	}
@@ -190,6 +195,14 @@ public class RoundManager {
 
 	public int getEventPrice() {
 		return eventPrice;
+	}
+
+	public int getSelledPercentage() {
+		return (int) (100 * selledPercentage);
+	}
+
+	public int getSelledPrice() {
+		return selledPrice;
 	}
 
 	public int getEventAmount() {
