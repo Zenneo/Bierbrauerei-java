@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 public class GameOver extends Dialog {
 
 	protected Object result;
-	protected Shell shell;
+	protected Shell shlGameover;
 
 	/**
 	 * Create the dialog.
@@ -40,10 +40,10 @@ public class GameOver extends Dialog {
 	 */
 	public Object open() {
 		createContents();
-		shell.open();
-		shell.layout();
+		shlGameover.open();
+		shlGameover.layout();
 		Display display = getParent().getDisplay();
-		while (!shell.isDisposed()) {
+		while (!shlGameover.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -55,13 +55,13 @@ public class GameOver extends Dialog {
 	 * Create contents of the dialog.
 	 */
 	private void createContents() {
-		shell = new Shell(getParent(), SWT.DIALOG_TRIM | SWT.SYSTEM_MODAL);
-		shell.setMinimumSize(new Point(344, 184));
-		shell.setSize(296, 161);
-		shell.setText(getText());
-		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		shlGameover = new Shell(getParent(), SWT.BORDER | SWT.TITLE | SWT.SYSTEM_MODAL);
+		shlGameover.setMinimumSize(new Point(344, 184));
+		shlGameover.setSize(296, 161);
+		shlGameover.setText("GameOver!");
+		shlGameover.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		SashForm sashForm_2 = new SashForm(shell, SWT.VERTICAL);
+		SashForm sashForm_2 = new SashForm(shlGameover, SWT.VERTICAL);
 		
 		SashForm sashForm = new SashForm(sashForm_2, SWT.VERTICAL);
 		
