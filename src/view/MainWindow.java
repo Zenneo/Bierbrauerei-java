@@ -12,15 +12,7 @@ import model.*;
 public class MainWindow {
 
 	protected Shell shell;
-
-	/**
-	 * Launch the application.
-	 * 
-	 * @param args
-	 */
-
 	private RoundManager roundmanager;
-
 	private Shell mainShell;
 
 	// dynamic UI elements
@@ -38,11 +30,8 @@ public class MainWindow {
 	private Label eventAmount;
 	private Label eventRoundsLeft;
 	private Button doEvent;
-
 	private Label summe;
-
 	private Scale price_scale;
-
 	private Spinner price_spinner;
 
 	// constructor
@@ -101,7 +90,7 @@ public class MainWindow {
 				
 				summe = new Label(composite, SWT.NONE);
 				summe.setAlignment(SWT.RIGHT);
-				summe.setText("Summe: 0€");
+				summe.setText("Summe: 0â‚¬");
 
 		SashForm price = new SashForm(sashForm_2, SWT.NONE);
 
@@ -172,14 +161,14 @@ public class MainWindow {
 
 		amount.setWeights(new int[] { 4, 1 });
 
-		Group büroGroup = new Group(sashForm_2, SWT.NONE);
-		büroGroup.setText("B\u00FCro");
-		büroGroup.setLayout(new FillLayout(SWT.HORIZONTAL));
+		Group bÃ¼roGroup = new Group(sashForm_2, SWT.NONE);
+		bÃ¼roGroup.setText("B\u00FCro");
+		bÃ¼roGroup.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		konto = new Label(büroGroup, SWT.NONE);
+		konto = new Label(bÃ¼roGroup, SWT.NONE);
 		konto.setText("Konto: xyz");
 
-		kosten = new Label(büroGroup, SWT.NONE);
+		kosten = new Label(bÃ¼roGroup, SWT.NONE);
 		kosten.setText("Kosten: xyz");
 		sashForm_2.setWeights(new int[] { 1, 2, 1, 2, 2 });
 
@@ -326,9 +315,9 @@ public class MainWindow {
 
 	private void fetchUIData() {
 		// update labels
-		konto.setText("Kontostand: " + roundmanager.getCapital() + "€");
-		kosten.setText("Kosten: " + roundmanager.getRoundlyCosts() + "€");
-		capacity.setText("Lager-Kapazität: "
+		konto.setText("Kontostand: " + roundmanager.getCapital() + "â‚¬");
+		kosten.setText("Kosten: " + roundmanager.getRoundlyCosts() + "â‚¬");
+		capacity.setText("Lager-KapazitÃ¤t: "
 				+ roundmanager.getStorageMaxSpace());
 		storage.setText("Lagernutzung: " + roundmanager.getStorage());
 		output.setText("Produktionsmenge: " + roundmanager.getOutput());
@@ -352,11 +341,11 @@ public class MainWindow {
 			eventDescription.setEnabled(true);
 			eventName.setText(roundmanager.getEventName());
 			eventDescription.setText(roundmanager.getEventDescription());
-			eventPrice.setText("Belohnung: " + roundmanager.getEventPrice() + "€");
+			eventPrice.setText("Belohnung: " + roundmanager.getEventPrice() + "â‚¬");
 			eventAmount.setText("Erwartete Biermenge: "
 					+ roundmanager.getEventAmount());
 			eventRoundsLeft.setText("Noch " + roundmanager.getEventDurability()
-					+ " Runden übrig");
+					+ " Runden Ã¼brig");
 
 			// check if event can be completed
 			doEvent.setEnabled(roundmanager.checkEventPossibility());
@@ -377,7 +366,7 @@ public class MainWindow {
 	
 	private void updateSumLabel(boolean isSum) {
 		if (isSum || (roundmanager.getSelledPrice() == 0)) {			
-			summe.setText("Summe: " + price_spinner.getSelection() * amount_spinner.getSelection() + "€");
+			summe.setText("Summe: " + price_spinner.getSelection() * amount_spinner.getSelection() + "â‚¬");
 		} else {
 			summe.setText(roundmanager.getSelledPercentage() + "% zu: " + roundmanager.getSelledPrice() + " verkauft.");
 		}
