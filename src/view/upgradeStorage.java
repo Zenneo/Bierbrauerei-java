@@ -187,7 +187,7 @@ public class upgradeStorage extends Dialog {
 		upgrade_small.setText(roundmanager.getUpgradesStorage()[0]
 				.getDescriptions());
 		upgrade_small.setToolTipText("Verbessert die Lagerkapazität um "
-				+ roundmanager.getUpgradeStorageEffect(0)  + ". Pro Tag werden " + roundmanager.getUpgradesStorage()[0].getRoundlyCosts() + "€ extra gezahlt");
+				+ roundmanager.getUpgradeStorageEffect(0)  + ". Pro Runde werden " + roundmanager.getUpgradesStorage()[0].getRoundlyCosts() + "€ extra gezahlt");
 		cost_small.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(0)
 				+ "€");
 
@@ -203,7 +203,7 @@ public class upgradeStorage extends Dialog {
 		upgrade_medium.setText(roundmanager.getUpgradesStorage()[1]
 				.getDescriptions());
 		upgrade_medium.setToolTipText("Verbessert die Lagerkapazität um "
-				+ roundmanager.getUpgradeStorageEffect(1)  + ". Pro Tag werden " + roundmanager.getUpgradesStorage()[1].getRoundlyCosts() + "€ extra gezahlt");
+				+ roundmanager.getUpgradeStorageEffect(1)  + ". Pro Runde werden " + roundmanager.getUpgradesStorage()[1].getRoundlyCosts() + "€ extra gezahlt");
 		cost_medium.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(1)
 				+ "€");
 
@@ -219,7 +219,7 @@ public class upgradeStorage extends Dialog {
 		upgrade_big.setText(roundmanager.getUpgradesStorage()[2]
 				.getDescriptions());
 		upgrade_big.setToolTipText("Verbessert die Lagerkapazität um "
-				+ roundmanager.getUpgradeStorageEffect(2)  + ". Pro Tag werden " + roundmanager.getUpgradesStorage()[2].getRoundlyCosts() + "€ extra gezahlt");
+				+ roundmanager.getUpgradeStorageEffect(2)  + ". Pro Runde werden " + roundmanager.getUpgradesStorage()[2].getRoundlyCosts() + "€ extra gezahlt");
 		cost_big.setText("Kosten: " + roundmanager.getUpgradeStoragePrice(2)
 				+ "€");
 

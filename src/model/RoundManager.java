@@ -46,7 +46,7 @@ public class RoundManager {
 		bank.payOut(brewery.getRoundlyCosts());
 		System.out.println("vor Event");
 		eventDurability--;
-		if (eventDurability < 1) {
+		if (eventDurability < 0) {
 			getEmptyEvent();
 		}
 		if (eventName == "") {
@@ -128,6 +128,7 @@ public class RoundManager {
 		return factor / 100;
 	}
 
+	// nicht mehr benötigt; UI ändert Text
 	private void getEmptyEvent() {
 		eventName = "";
 		eventDescription = "Gerade gibt es kein Event, warte noch ein paar Tage, dann kommt wieder ein Event.";

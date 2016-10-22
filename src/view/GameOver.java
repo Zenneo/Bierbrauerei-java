@@ -1,37 +1,35 @@
 package view;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.layout.RowLayout;
-import org.eclipse.swt.layout.RowData;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.wb.swt.SWTResourceManager;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Composite;
 
 public class GameOver extends Dialog {
 
 	protected Object result;
 	protected Shell shlGameover;
+	private int rounds;
 
 	/**
 	 * Create the dialog.
 	 * @param parent
 	 * @param style
+	 * @param style 
 	 */
-	public GameOver(Shell parent, int style) {
+	public GameOver(Shell parent, int rounds, int style) {
 		super(parent, style);
-		setText("SWT Dialog");
+		setText("Game Over");
+		this.rounds = rounds;
 	}
 
 	/**
@@ -72,7 +70,12 @@ public class GameOver extends Dialog {
 		endText.setFont(SWTResourceManager.getFont("Rockwell", 23, SWT.NORMAL));
 		endText.setAlignment(SWT.CENTER);
 		endText.setText("Du bist pleite !!!");
-		sashForm.setWeights(new int[] {1, 1});
+		
+		Label lblNewLabel = new Label(sashForm, SWT.NONE);
+		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
+		lblNewLabel.setAlignment(SWT.CENTER);
+		lblNewLabel.setText("Nach " + rounds +" Runden");
+		sashForm.setWeights(new int[] {1, 3, 2});
 		
 		SashForm sashForm_1 = new SashForm(sashForm_2, SWT.NONE);
 		
