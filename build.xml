@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name="Bierbrauerei-java">
+	<taskdef name="swtjar" classname="org.swtjar.ant.SWTJarTask" classpath="./swtJars/swtjar.jar" />
+	<!-- Package cross platform SWT Jar -->
+	<swtjar jarfile="./bierbrauerei.jar" targetmainclass="Main" swtversion="4.6">
+		<!-- Application Classes -->
+		<fileset dir="./bin/" includes="**/*.class" />
+
+		<!-- Library Classes -->
+		<zipfileset excludes="META-INF/*.MF" src="sqlite-jdbc-3.8.11.2.jar" />
+
+		<!-- SWT Jars -->
+		<fileset dir="./swtJars" includes="swt-*-4.6.jar" />
+
+	</swtjar>
+</project>
